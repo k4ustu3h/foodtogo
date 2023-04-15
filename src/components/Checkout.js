@@ -33,7 +33,7 @@ export default function Checkout() {
 			return;
 		}
 
-		const result = await axios.post("http://localhost:5000/api/auth/orders");
+		const result = await axios.post("https://foodtogo.cyclic.app/api/orders");
 
 		if (!result) {
 			alert("Server error. Are you online?");
@@ -50,22 +50,25 @@ export default function Checkout() {
 			description: "Test Transaction",
 			order_id: order_id,
 			handler: async function (res) {
-				let response = await fetch("http://localhost:5000/api/auth/orderData", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						order_data: orderData,
-						email: userEmail,
-						order_date: new Date().toDateString(),
-						order_time: new Date().toTimeString(),
-						orderCreationId: order_id,
-						razorpayPaymentId: res.razorpay_payment_id,
-						razorpayOrderId: res.razorpay_order_id,
-						razorpaySignature: res.razorpay_signature,
-					}),
-				});
+				let response = await fetch(
+					"https://foodtogo.cyclic.app/api/orderData",
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+						},
+						body: JSON.stringify({
+							order_data: orderData,
+							email: userEmail,
+							order_date: new Date().toDateString(),
+							order_time: new Date().toTimeString(),
+							orderCreationId: order_id,
+							razorpayPaymentId: res.razorpay_payment_id,
+							razorpayOrderId: res.razorpay_order_id,
+							razorpaySignature: res.razorpay_signature,
+						}),
+					}
+				);
 				console.log("JSON RESPONSE:::::", response.status);
 				if (response.status === 200) {
 					dispatch({ type: "DROP" });

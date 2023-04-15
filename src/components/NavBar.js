@@ -219,7 +219,6 @@ export default function NavBar() {
 												component={RouterLink}
 												to={setting.link}
 												key={setting.name}
-												sx={{ color: "inherit", textDecoration: "none" }}
 											>
 												<MenuItem onClick={handleCloseUserMenu}>
 													<Typography textAlign="center">

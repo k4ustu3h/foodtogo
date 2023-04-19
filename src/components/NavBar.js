@@ -14,7 +14,7 @@ import { Icon } from "@iconify/react";
 import { Stack, ThemeProvider } from "@mui/material";
 import { themeOptions } from "../styles/themeOptions";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import Cart from "../screens/Cart";
+import Cart from "../pages/Cart";
 import { ScrollToTop } from "./ScrollToTop";
 
 const pages = [

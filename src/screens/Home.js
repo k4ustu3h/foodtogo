@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Grid from "@mui/material/Unstable_Grid2";
+import CssBaseline from "@mui/material/CssBaseline";
 import FoodItems from "../components/FoodItems";
 import Footer from "../components/Footer";
+import Grid from "@mui/material/Unstable_Grid2";
 import Navbar from "../components/NavBar";
 import { ThemeProvider } from "@mui/material";
 import { themeOptions } from "../styles/themeOptions";
@@ -31,6 +32,7 @@ export default function Home() {
 
 	return (
 		<ThemeProvider theme={themeOptions}>
+			<CssBaseline />
 			<div>
 				<Navbar />
 			</div>

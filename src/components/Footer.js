@@ -1,46 +1,78 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
+import { Link as RouterLink } from "react-router-dom";
+import { Icon } from "@iconify/react";
 
 export default function Footer() {
-	return (
-		<div>
-			<div className="container">
-				<footer className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-					<div className="col-md-4 d-flex align-items-center">
-						<Link
-							to="/"
-							className="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
-						></Link>
-						<span className="text-muted">
-							© 2023 <i>Food To Go</i>, Inc
-						</span>
-					</div>
+	const links = [
+		{ name: "About Us", link: "about" },
+		{ name: "Contact Us", link: "contact" },
+	];
 
-					<ul className="nav col-md-4 justify-content-end list-unstyled d-flex">
-						<li className="ms-3">
-							<Link className="text-muted" to="/">
-								<svg className="bi" width="24" height="24">
-									<use></use>
-								</svg>
-							</Link>
-						</li>
-						<li className="ms-3">
-							<Link className="text-muted" to="/">
-								<svg className="bi" width="24" height="24">
-									<use></use>
-								</svg>
-							</Link>
-						</li>
-						<li className="ms-3">
-							<Link className="text-muted" to="/">
-								<svg className="bi" width="24" height="24">
-									<use></use>
-								</svg>
-							</Link>
-						</li>
-					</ul>
-				</footer>
-			</div>
-		</div>
+	return (
+		<Container maxWidth="lg">
+			<Box
+				display="flex"
+				flexWrap="wrap"
+				alignItems="center"
+				sx={{ justifyContent: "center", pb: 4, pt: 6 }}
+			>
+				<Link
+					component={RouterLink}
+					sx={{
+						":hover": {
+							color: "primary.main",
+						},
+					}}
+					to="/"
+				>
+					<Icon icon="ic:outline-delivery-dining" width="64" />
+				</Link>
+				<Box
+					sx={{
+						display: "flex",
+						flexWrap: "wrap",
+						justifyContent: "center",
+						mr: "auto",
+						ml: 3,
+						mb: 0,
+					}}
+				>
+					{links.map((link) => {
+						return (
+							<Typography
+								color="textPrimary"
+								component={RouterLink}
+								key={link.name}
+								sx={{ ml: 3, mr: 3 }}
+								to={link.link}
+								variant="body1"
+							>
+								{link.name}
+							</Typography>
+						);
+					})}
+				</Box>
+				<Stack direction="row" spacing={2}>
+					<IconButton href="https://facebook.com/">
+						<Icon icon="simple-icons:facebook" width="24" />
+					</IconButton>
+					<IconButton href="https://github.com/k4ustu3h/foodtogo">
+						<Icon icon="simple-icons:github" width="24" />
+					</IconButton>
+					<IconButton href="https://instagram.com/">
+						<Icon icon="simple-icons:instagram" width="24" />
+					</IconButton>
+					<IconButton href="https://twitter.com/">
+						<Icon icon="simple-icons:twitter" width="24" />
+					</IconButton>
+				</Stack>
+			</Box>
+		</Container>
 	);
 }

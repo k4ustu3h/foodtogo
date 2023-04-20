@@ -114,22 +114,20 @@ export default function FoodItems(props) {
 	let finalPrice = qty * parseInt(options[size]);
 	return (
 		<React.Fragment>
-			<Card sx={{ width: 258, borderRadius: 4 }}>
+			<Card sx={{ width: "100%", borderRadius: 4 }}>
 				<CardMedia
 					sx={{ height: 176, borderRadius: 4 }}
 					image={props.ImgSrc}
 					title={props.foodName}
 				/>
-
 				<CardContent>
-					<Typography gutterBottom variant="h6" component="div">
+					<Typography gutterBottom variant="h6">
 						{props.foodName}
 					</Typography>
 					<Typography variant="subtitle1" color="text.secondary" mt={1}>
 						₹{finalPrice}/-
 					</Typography>
 				</CardContent>
-
 				<CardActions>
 					<ExpandMore
 						expand={expanded}
@@ -214,4 +212,3 @@ export default function FoodItems(props) {
 		</React.Fragment>
 	);
 }
-//

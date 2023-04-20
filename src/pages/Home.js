@@ -158,7 +158,13 @@ export default function Home() {
 												)
 												.map((filterItems) => {
 													return (
-														<Grid key={filterItems._id} md={3} sm={6} xs={12}>
+														<Grid
+															key={filterItems._id}
+															xs={12}
+															sm={6}
+															md={4}
+															lg={3}
+														>
 															<FoodItems
 																foodName={filterItems.name}
 																description={filterItems.description}

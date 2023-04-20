@@ -1,30 +1,37 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Container from "@mui/material/Container";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import Grid from "@mui/material/Unstable_Grid2";
+import Typography from "@mui/material/Typography";
+import { Button, ThemeProvider } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
+import { themeOptions } from "../styles/themeOptions";
+import { Player } from "@lottiefiles/react-lottie-player";
 
 export default function MyOrder() {
-	const [orderData, setorderData] = useState({});
+	const [orderData, setOrderData] = useState({});
 
 	const fetchMyOrder = async () => {
 		console.log(localStorage.getItem("userEmail"));
-		await fetch("https://foodtogo.cyclic.app/api/myOrderData", {
-			// credentials: 'include',
-			// Origin:"http://localhost:3000/login",
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				email: localStorage.getItem("userEmail"),
-			}),
-		}).then(async (res) => {
-			let response = await res.json();
-			await setorderData(response);
-		});
-
-		// await res.map((data)=>{
-		//    console.log(data)
-		// })
+		try {
+			const response = await axios.post(
+				"https://foodtogo.cyclic.app/api/myOrderData",
+				{
+					email: localStorage.getItem("userEmail"),
+				}
+			);
+			setOrderData(response.data);
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	useEffect(() => {
@@ -32,81 +39,121 @@ export default function MyOrder() {
 	}, []);
 
 	return (
-		<div>
-			<div>
-				<Navbar />
-			</div>
-
-			<div className="container">
-				<div className="row">
-					{orderData !== {}
-						? Array(orderData).map((data) => {
-								return data.orderData
-									? data.orderData.order_data
-											.slice(0)
-											.reverse()
-											.map((item) => {
-												return item.map((arrayData) => {
-													return (
-														<div>
-															{arrayData.Order_date ? (
-																<div className="m-auto mt-5">
-																	{(data = arrayData.Order_date)}
-																	<hr />
-																</div>
-															) : (
-																<div className="col-12 col-md-6 col-lg-3">
-																	<div
-																		className="card mt-3"
-																		style={{
-																			width: "16rem",
-																			maxHeight: "360px",
-																		}}
-																	>
-																		<img
-																			src={arrayData.img}
-																			className="card-img-top"
-																			alt="..."
-																			style={{
-																				height: "120px",
-																				objectFit: "fill",
-																			}}
-																		/>
-																		<div className="card-body">
-																			<h5 className="card-title">
-																				{arrayData.name}
-																			</h5>
-																			<div
-																				className="container w-100 p-0"
-																				style={{ height: "38px" }}
-																			>
-																				<span className="m-1">
-																					{arrayData.qty}
-																				</span>
-																				<span className="m-1">
-																					{arrayData.size}
-																				</span>
-																				<span className="m-1">{data}</span>
-																				<div className=" d-inline ms-2 h-100 w-20 fs-5">
-																					₹{arrayData.price}/-
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															)}
-														</div>
-													);
-												});
-											})
-									: "";
-						  })
-						: ""}
-				</div>
-			</div>
-
+		<ThemeProvider theme={themeOptions}>
+			<CssBaseline />
+			<Navbar />
+			<Container sx={{ my: 4 }}>
+				{orderData !== {}
+					? Array(orderData).map((data) => {
+							return data.orderData ? (
+								data.orderData.order_data
+									.slice(0)
+									.reverse()
+									.map((item, index) => {
+										let gridItems = item
+											.filter(
+												(arrayData) =>
+													!(arrayData.Order_date && arrayData.Order_time)
+											)
+											.map((arrayData, i) => (
+												<Grid item xs={12} sm={6} md={4} lg={3} key={`${i}`}>
+													<Card sx={{ width: "100%", borderRadius: 4 }}>
+														<CardMedia
+															image={arrayData.img}
+															sx={{ height: 176, borderRadius: 4 }}
+														/>
+														<CardContent>
+															<Typography variant="subtitle2">
+																{arrayData.name}
+															</Typography>
+															<Typography
+																color="text.secondary"
+																mt={1}
+																variant="subtitle1"
+															>
+																₹{arrayData.price}/-
+															</Typography>
+															<Typography
+																color="text.secondary"
+																mt={1}
+																variant="subtitle1"
+															>
+																{arrayData.qty} {arrayData.size}
+															</Typography>
+														</CardContent>
+													</Card>
+												</Grid>
+											));
+										return (
+											<React.Fragment key={`${index}`}>
+												<Box mb={3}>
+													<Typography gutterBottom variant="h4">
+														{item[0].Order_date}
+													</Typography>
+													<Typography variant="h6">
+														{item[0].Order_time}
+													</Typography>
+													<Divider sx={{ my: 2 }} />
+												</Box>
+												<Grid container spacing={2} sx={{ mb: 4 }}>
+													{gridItems}
+												</Grid>
+											</React.Fragment>
+										);
+									})
+							) : (
+								<Container maxWidth="md">
+									<Grid
+										alignItems="center"
+										container
+										direction="column"
+										justifyContent="center"
+										style={{ height: "100vh" }}
+									>
+										<Grid
+											item
+											xs={12}
+											sx={{ pt: 6, pb: 10, textAlign: "center" }}
+										>
+											<Player
+												autoplay
+												loop
+												src="https://assets1.lottiefiles.com/packages/lf20_xNEYcvnqso.json"
+												style={{
+													height: "400px",
+													margin: "0 auto",
+													maxWidth: "600px",
+													width: "100%",
+												}}
+											/>
+											<Typography color="primary" variant="h3">
+												No orders yet...
+											</Typography>
+											<Typography gutterBottom variant="h3">
+												Still haven't decided what to order?
+											</Typography>
+											<Typography color="textSecondary" variant="subtitle1">
+												Go to the homepage to look at the mouth watering-dishes
+												that we have to offer
+											</Typography>
+											<Box mt={3}>
+												<Button
+													color="primary"
+													component={RouterLink}
+													to="/"
+													variant="contained"
+												>
+													Return to the homepage
+												</Button>
+											</Box>
+										</Grid>
+									</Grid>
+								</Container>
+							);
+					  })
+					: ""}
+			</Container>
 			<Footer />
-		</div>
+		</ThemeProvider>
 	);
 }
-// {"orderData":{"_id":"63024fd2be92d0469bd9e31a","email":"mohanDas@gmail.com","order_data":[[[{"id":"62ff20fbaed6a15f800125e9","name":"Chicken Fried Rice","qty":"4","size":"half","price":520},{"id":"62ff20fbaed6a15f800125ea","name":"Veg Fried Rice","qty":"4","size":"half","price":440}],"2022-08-21T15:31:30.239Z"],[[{"id":"62ff20fbaed6a15f800125f4","name":"Mix Veg Pizza","qty":"4","size":"medium","price":800},{"id":"62ff20fbaed6a15f800125f3","name":"Chicken Doub;e Cheeze Pizza","qty":"4","size":"regular","price":480}],"2022-08-21T15:32:38.861Z"]],"__v":0}}

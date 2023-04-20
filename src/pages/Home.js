@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
 import FilledInput from "@mui/material/FilledInput";
 import FoodItems from "../components/FoodItems";
 import Footer from "../components/Footer";
@@ -23,15 +25,12 @@ export default function Home() {
 	const [search, setSearch] = useState("");
 	const loadFoodItems = async () => {
 		let response = await fetch("https://foodtogo.cyclic.app/api/foodData", {
-			// credentials: 'include',
-			// Origin:"http://localhost:3000/login",
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
 		});
 		response = await response.json();
-		// console.log(response[1][0].CategoryName)
 		setFoodItems(response[0]);
 		setFoodCat(response[1]);
 	};
@@ -64,7 +63,7 @@ export default function Home() {
 						maxWidth: { xs: "100%", md: 1280 },
 					}}
 				>
-					<Grid item xs={12} md={6} sx={{ pb: { xs: 2, md: 42 } }}>
+					<Grid xs={12} md={6} sx={{ pb: { xs: 2, md: 42 } }}>
 						<Typography
 							variant="h3"
 							fontWeight={700}
@@ -125,7 +124,7 @@ export default function Home() {
 							</FormControl>
 						</Box>
 					</Grid>
-					<Grid item xs={12} md={6} sx={{ mt: { xs: 8, md: 20 } }}>
+					<Grid xs={12} md={6} sx={{ mt: { xs: 8, md: 20 } }}>
 						<Player
 							autoplay
 							loop
@@ -134,24 +133,21 @@ export default function Home() {
 					</Grid>
 				</Grid>
 			</Box>
-			<div className="container" id="menu">
+			<Container id="menu">
 				{foodCat !== []
 					? foodCat.map((data) => {
 							return (
-								<div className="row mb-3">
-									<div key={data._id} className="fs-3 m-3">
+								<Box key={data._id} mb={3}>
+									<Typography gutterBottom variant="h4">
 										{data.CategoryName}
-									</div>
-									<hr
-										id="hr-success"
-										style={{
-											height: "4px",
-											backgroundImage:
-												"-webkit-linear-gradient(left,rgb(0, 255, 137),rgb(0, 0, 0))",
+									</Typography>
+									<Divider
+										sx={{
+											my: 2,
 										}}
 									/>
 									<Grid container spacing={4}>
-										{foodItems !== [] ? (
+										{foodItems.length > 0 &&
 											foodItems
 												.filter(
 													(items) =>
@@ -162,7 +158,7 @@ export default function Home() {
 												)
 												.map((filterItems) => {
 													return (
-														<Grid key={filterItems._id}>
+														<Grid key={filterItems._id} md={3} sm={6} xs={12}>
 															<FoodItems
 																foodName={filterItems.name}
 																description={filterItems.description}
@@ -172,16 +168,13 @@ export default function Home() {
 															></FoodItems>
 														</Grid>
 													);
-												})
-										) : (
-											<div> No Such Data </div>
-										)}
+												})}
 									</Grid>
-								</div>
+								</Box>
 							);
 					  })
 					: ""}
-			</div>
+			</Container>
 			<Footer />
 		</ThemeProvider>
 	);

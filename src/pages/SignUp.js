@@ -1,18 +1,19 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import { ThemeProvider } from "@mui/material/styles";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { themeOptions } from "../styles/themeOptions";
+import CssBaseline from "@mui/material/CssBaseline";
+import Grid from "@mui/material/Grid";
+import Link from "@mui/material/Link";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { ThemeProvider } from "@mui/material/styles";
+import { themeOptions } from "../styles/themeOptions";
 import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 export default function SignUp() {
 	const [credentials, setCredentials] = React.useState({
@@ -55,8 +56,14 @@ export default function SignUp() {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
 
+	const [mode, setMode] = useState("dark");
+
+	const handleModeChange = (newMode) => {
+		setMode(newMode);
+	};
+
 	return (
-		<ThemeProvider theme={themeOptions}>
+		<ThemeProvider theme={themeOptions(mode)}>
 			<Container component="main" maxWidth="xs">
 				<CssBaseline />
 				<NavBar />
@@ -162,6 +169,7 @@ export default function SignUp() {
 					</Box>
 				</Box>
 			</Container>
+			<Footer onChange={handleModeChange}></Footer>
 		</ThemeProvider>
 	);
 }

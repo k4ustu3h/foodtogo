@@ -38,8 +38,14 @@ export default function MyOrder() {
 		fetchMyOrder();
 	}, []);
 
+	const [mode, setMode] = useState("dark");
+
+	const handleModeChange = (newMode) => {
+		setMode(newMode);
+	};
+
 	return (
-		<ThemeProvider theme={themeOptions}>
+		<ThemeProvider theme={themeOptions(mode)}>
 			<CssBaseline />
 			<Navbar />
 			<Container sx={{ my: 4 }}>
@@ -153,7 +159,7 @@ export default function MyOrder() {
 					  })
 					: ""}
 			</Container>
-			<Footer />
+			<Footer onChange={handleModeChange}></Footer>
 		</ThemeProvider>
 	);
 }

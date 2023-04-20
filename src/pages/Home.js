@@ -14,10 +14,10 @@ import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import Navbar from "../components/NavBar";
 import Typography from "@mui/material/Typography";
-import { ThemeProvider } from "@mui/material";
-import { themeOptions } from "../styles/themeOptions";
 import { Icon } from "@iconify/react";
 import { Player } from "@lottiefiles/react-lottie-player";
+import { ThemeProvider } from "@mui/material";
+import { themeOptions } from "../styles/themeOptions";
 
 export default function Home() {
 	const [foodCat, setFoodCat] = useState([]);
@@ -39,8 +39,14 @@ export default function Home() {
 		loadFoodItems();
 	}, []);
 
+	const [mode, setMode] = useState("dark");
+
+	const handleModeChange = (newMode) => {
+		setMode(newMode);
+	};
+
 	return (
-		<ThemeProvider theme={themeOptions}>
+		<ThemeProvider theme={themeOptions(mode)}>
 			<CssBaseline />
 			<Navbar />
 			<Box
@@ -181,7 +187,7 @@ export default function Home() {
 					  })
 					: ""}
 			</Container>
-			<Footer />
+			<Footer onChange={handleModeChange}></Footer>
 		</ThemeProvider>
 	);
 }

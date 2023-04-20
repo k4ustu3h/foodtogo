@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -14,10 +14,8 @@ import Typography from "@mui/material/Typography";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Icon } from "@iconify/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { ThemeProvider } from "@mui/material";
 import Cart from "../pages/Cart";
 import { ScrollToTop } from "./ScrollToTop";
-import { themeOptions } from "../styles/themeOptions";
 
 function ElevationScroll(props) {
 	const { children } = props;
@@ -74,7 +72,7 @@ export default function NavBar(props) {
 	};
 
 	return (
-		<ThemeProvider theme={themeOptions}>
+		<React.Fragment>
 			<ElevationScroll {...props}>
 				<AppBar position="fixed">
 					<Container maxWidth="xl">
@@ -256,6 +254,6 @@ export default function NavBar(props) {
 			</ElevationScroll>
 			<Toolbar id="back-to-top-anchor" />
 			<ScrollToTop />
-		</ThemeProvider>
+		</React.Fragment>
 	);
 }

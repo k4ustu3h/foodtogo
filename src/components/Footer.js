@@ -5,10 +5,11 @@ import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Link as RouterLink } from "react-router-dom";
 import { Icon } from "@iconify/react";
+import { Link as RouterLink } from "react-router-dom";
+import DarkModeSwitch from "./DarkModeSwitch";
 
-export default function Footer() {
+export default function Footer(props) {
 	const links = [
 		{ name: "About Us", link: "about" },
 		{ name: "Contact Us", link: "contact" },
@@ -59,6 +60,7 @@ export default function Footer() {
 					})}
 				</Box>
 				<Stack direction="row" spacing={2}>
+					<DarkModeSwitch onChange={props.onChange} />
 					<IconButton href="https://facebook.com/">
 						<Icon icon="simple-icons:facebook" width="24" />
 					</IconButton>

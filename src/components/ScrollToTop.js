@@ -16,9 +16,7 @@ export function ScrollToTop() {
 		);
 
 		if (anchor) {
-			anchor.scrollIntoView({
-				block: "center",
-			});
+			anchor.scrollIntoView({ behavior: "smooth", block: "center" });
 		}
 	};
 

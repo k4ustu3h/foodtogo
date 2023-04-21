@@ -1,19 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
-import { ThemeProvider } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import { Player } from "@lottiefiles/react-lottie-player";
+import { ThemeProvider } from "@mui/material";
 import { themeOptions } from "../styles/themeOptions";
+import Footer from "../components/Footer";
 
 export default function ErrorPage() {
+	const [mode, setMode] = useState(() => {
+		const storedMode = localStorage.getItem("darkModeEnabled");
+		return storedMode !== null ? storedMode : "dark";
+	});
+
+	const handleModeChange = (newMode) => {
+		setMode(newMode);
+		localStorage.setItem("darkModeEnabled", newMode);
+	};
+
 	return (
-		<ThemeProvider theme={themeOptions}>
+		<ThemeProvider theme={themeOptions(mode)}>
 			<CssBaseline />
-			<Container maxWidth="sm">
+			<Box
+				sx={{
+					alignItems: "center",
+					display: "flex",
+					justifyContent: "center",
+					minHeight: "100vh",
+					pt: { xs: 2, md: 24 },
+					px: { xs: 2, md: 24 },
+					width: "100%",
+				}}
+			>
 				<Box pt={6} pb={10} textAlign="center">
 					<Player
 						autoplay
@@ -44,7 +64,8 @@ export default function ErrorPage() {
 						</Button>
 					</Box>
 				</Box>
-			</Container>
+			</Box>
+			<Footer onChange={handleModeChange}></Footer>
 		</ThemeProvider>
 	);
 }

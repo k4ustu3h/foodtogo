@@ -56,10 +56,14 @@ export default function SignUp() {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
 
-	const [mode, setMode] = useState("dark");
+	const [mode, setMode] = useState(() => {
+		const storedMode = localStorage.getItem("darkModeEnabled");
+		return storedMode !== null ? storedMode : "dark";
+	});
 
 	const handleModeChange = (newMode) => {
 		setMode(newMode);
+		localStorage.setItem("darkModeEnabled", newMode);
 	};
 
 	return (

@@ -41,11 +41,7 @@ export default function Cart() {
 	return (
 		<div>
 			<React.Fragment key="anchor">
-				<IconButton
-					aria-label="Cart"
-					onClick={toggleDrawer("right", true)}
-					sx={{ mr: 2 }}
-				>
+				<IconButton aria-label="Cart" onClick={toggleDrawer("right", true)}>
 					<Badge badgeContent={data.length} color="primary">
 						<Icon icon="ic:outline-shopping-cart" width={24} />
 					</Badge>

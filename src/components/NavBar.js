@@ -4,6 +4,7 @@ import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
+import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -29,27 +30,11 @@ function ElevationScroll(props) {
 	});
 }
 
-const pages = [
-	{ link: "#home", name: "Home" },
-	{ link: "#about", name: "About Us" },
-	{ link: "#services", name: "Services" },
-	{ link: "#menu", name: "Menu" },
-	{ link: "#contact", name: "Contact Us" },
-];
-
 export default function NavBar(props) {
-	const [anchorElNav, setAnchorElNav] = React.useState(null);
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-	const handleOpenNavMenu = (event) => {
-		setAnchorElNav(event.currentTarget);
-	};
 	const handleOpenUserMenu = (event) => {
 		setAnchorElUser(event.currentTarget);
-	};
-
-	const handleCloseNavMenu = () => {
-		setAnchorElNav(null);
 	};
 
 	const handleCloseUserMenu = () => {
@@ -58,7 +43,6 @@ export default function NavBar(props) {
 
 	const settings = [
 		{ link: "/profile", name: "Profile" },
-		{ link: "/account", name: "Account" },
 		{ link: "/myOrder", name: "My Orders" },
 	];
 
@@ -77,134 +61,53 @@ export default function NavBar(props) {
 				<AppBar position="fixed">
 					<Container maxWidth="xl">
 						<Toolbar disableGutters>
-							<Box sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}>
+							<Box sx={{ display: "flex", mr: 1 }}>
 								<Icon icon="ic:outline-delivery-dining" width={24} />
 							</Box>
 							<Typography
-								variant="h6"
-								noWrap
 								component={RouterLink}
-								to="/"
+								noWrap
 								sx={{
-									mr: 2,
-									display: { xs: "none", md: "flex" },
+									display: "flex",
+									flexGrow: { xs: 1, md: 0 },
 									fontFamily: "sans-serif",
 									fontWeight: 700,
-									letterSpacing: ".1rem",
-									color: "inherit",
-									textDecoration: "none",
-								}}
-							>
-								Food To Go
-							</Typography>
-							<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-								<IconButton
-									size="large"
-									aria-label="account of current user"
-									aria-controls="menu-appbar"
-									aria-haspopup="true"
-									onClick={handleOpenNavMenu}
-									color="inherit"
-								>
-									<Icon icon="ic:outline-menu" />
-								</IconButton>
-								<Menu
-									id="menu-appbar"
-									anchorEl={anchorElNav}
-									anchorOrigin={{
-										vertical: "bottom",
-										horizontal: "left",
-									}}
-									keepMounted
-									transformOrigin={{
-										vertical: "top",
-										horizontal: "left",
-									}}
-									open={Boolean(anchorElNav)}
-									onClose={handleCloseNavMenu}
-									sx={{
-										display: { xs: "block", md: "none" },
-									}}
-								>
-									{pages.map((page) => (
-										<MenuItem key={page.name} onClick={handleCloseNavMenu}>
-											<Typography textAlign="center">{page.name}</Typography>
-										</MenuItem>
-									))}
-								</Menu>
-							</Box>
-							<Box
-								sx={{
-									display: { xs: "flex", md: "none" },
-									mr: 1,
-									textOverflow: "ellipsis",
-								}}
-							>
-								<Icon icon="ic:outline-delivery-dining" width={32} />
-							</Box>
-
-							<Typography
-								variant="h5"
-								noWrap
-								component="a"
-								href=""
-								sx={{
 									mr: 2,
-									display: { xs: "flex", md: "none" },
-									flexGrow: 1,
-									fontFamily: "monospace",
-									fontWeight: 700,
-									letterSpacing: ".3rem",
-									color: "inherit",
-									textDecoration: "none",
 								}}
+								to="/"
+								variant="h6"
 							>
 								Food To Go
 							</Typography>
-							<Box
+							<Stack
+								direction="row"
+								spacing={2}
 								sx={{
-									flexGrow: 1,
-									display: { xs: "none", md: "flex" },
-									ml: 2,
+									display: "flex",
+									ml: "auto",
 								}}
-							></Box>
-							<Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-								{pages.map((page) => (
-									<Button
-										key={page.name}
-										href={page.link}
-										onClick={handleCloseNavMenu}
-										sx={{ my: 2, color: "white", display: "block" }}
-									>
-										{page.name}
-									</Button>
-								))}
-							</Box>
-
-							{!localStorage.getItem("token") ? (
-								<Stack direction="row" spacing={2}>
-									<Button
-										component={RouterLink}
-										to="/login"
-										variant="contained"
-									>
-										Login
-									</Button>
-									<Button
-										component={RouterLink}
-										to="/signup"
-										variant="contained"
-									>
-										Sign Up
-									</Button>
-								</Stack>
-							) : (
-								<>
-									<Box sx={{ flexGrow: 0 }}>
-										<Cart />
-									</Box>
-
-									<Box sx={{ flexGrow: 0 }}>
+							>
+								<Cart />
+								<Divider orientation="vertical" variant="middle" flexItem />
+								{!localStorage.getItem("token") ? (
+									<>
+										<Button
+											component={RouterLink}
+											sx={{ color: "text.primary" }}
+											to="/signup"
+										>
+											Sign Up
+										</Button>
+										<Button
+											component={RouterLink}
+											to="/login"
+											variant="contained"
+										>
+											Login
+										</Button>
+									</>
+								) : (
+									<>
 										<Tooltip title="Open settings">
 											<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
 												<Avatar>
@@ -213,26 +116,23 @@ export default function NavBar(props) {
 											</IconButton>
 										</Tooltip>
 										<Menu
-											sx={{ mt: "45px" }}
-											id="menu-appbar"
 											anchorEl={anchorElUser}
-											anchorOrigin={{
-												vertical: "top",
-												horizontal: "right",
-											}}
+											anchorOrigin={{ vertical: "top", horizontal: "right" }}
+											id="menu-appbar"
 											keepMounted
+											onClose={handleCloseUserMenu}
+											open={Boolean(anchorElUser)}
+											sx={{ mt: "45px" }}
 											transformOrigin={{
 												vertical: "top",
 												horizontal: "right",
 											}}
-											open={Boolean(anchorElUser)}
-											onClose={handleCloseUserMenu}
 										>
 											{settings.map((setting) => (
 												<Box
 													component={RouterLink}
-													to={setting.link}
 													key={setting.name}
+													to={setting.link}
 												>
 													<MenuItem onClick={handleCloseUserMenu}>
 														<Typography textAlign="center">
@@ -245,9 +145,9 @@ export default function NavBar(props) {
 												<Typography textAlign="center">Log Out</Typography>
 											</MenuItem>
 										</Menu>
-									</Box>
-								</>
-							)}
+									</>
+								)}
+							</Stack>
 						</Toolbar>
 					</Container>
 				</AppBar>

@@ -1,10 +1,14 @@
 import React from "react";
 import axios from "axios";
-import { Button } from "@mui/material";
+import Button from "@mui/material/Button";
+import { Icon } from "@iconify/react";
+import { useNavigate } from "react-router-dom";
 import { brown } from "../styles/palette";
 import { useCart, useDispatchCart } from "./ContextReducer";
 
 export default function Checkout() {
+	let navigate = useNavigate();
+
 	function loadScript(src) {
 		return new Promise((resolve) => {
 			const script = document.createElement("script");
@@ -89,9 +93,21 @@ export default function Checkout() {
 		paymentObject.open();
 	}
 
+	const handleClick = () => {
+		if (!localStorage.getItem("token")) {
+			navigate("/login");
+		} else {
+			displayRazorpay();
+		}
+	};
+
 	return (
 		<div>
-			<Button variant="contained" onClick={displayRazorpay}>
+			<Button
+				onClick={handleClick}
+				startIcon={<Icon icon="ic:outline-shopping-cart-checkout" />}
+				variant="contained"
+			>
 				Checkout
 			</Button>
 		</div>

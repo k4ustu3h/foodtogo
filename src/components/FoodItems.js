@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatchCart, useCart } from "./ContextReducer";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
@@ -36,7 +35,6 @@ const ExpandMore = styled((props) => {
 export default function FoodItems(props) {
 	let data = useCart();
 
-	let navigate = useNavigate();
 	const [qty, setQty] = useState(1);
 	const [size, setSize] = useState("");
 	const [expanded, setExpanded] = React.useState(false);
@@ -46,11 +44,7 @@ export default function FoodItems(props) {
 	let priceOptions = Object.keys(options);
 	let foodItem = props.item;
 	const dispatch = useDispatchCart();
-	const handleClick = () => {
-		if (!localStorage.getItem("token")) {
-			navigate("/login");
-		}
-	};
+
 	const handleQty = (e) => {
 		setQty(e.target.value);
 	};
@@ -184,7 +178,6 @@ export default function FoodItems(props) {
 								value={size}
 								label="Size"
 								sx={{ fontSize: 12, color: "primary.main" }}
-								onClick={handleClick}
 								onChange={handleOptions}
 							>
 								{priceOptions.map((i) => {

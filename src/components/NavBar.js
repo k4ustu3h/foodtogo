@@ -15,7 +15,7 @@ import Typography from "@mui/material/Typography";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Icon } from "@iconify/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import Cart from "../pages/Cart";
+import Cart from "./Cart";
 import { ScrollToTop } from "./ScrollToTop";
 
 function ElevationScroll(props) {

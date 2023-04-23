@@ -128,7 +128,7 @@ export default function MyOrder() {
 											<Player
 												autoplay
 												loop
-												src="https://assets1.lottiefiles.com/packages/lf20_xNEYcvnqso.json"
+												src="https://assets7.lottiefiles.com/private_files/lf30_bn5winlb.json"
 												style={{
 													height: "400px",
 													margin: "0 auto",
@@ -137,7 +137,7 @@ export default function MyOrder() {
 												}}
 											/>
 											<Typography color="primary" variant="h3">
-												No orders yet...
+												Zero, zip, zilch , nada.
 											</Typography>
 											<Typography gutterBottom variant="h3">
 												Still haven't decided what to order?

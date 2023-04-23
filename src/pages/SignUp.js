@@ -5,17 +5,19 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
+import LinearProgress from "@mui/material/LinearProgress";
 import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
-import { themeOptions } from "../styles/themeOptions";
-import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
+import { themeOptions } from "../styles/themeOptions";
 
 export default function SignUp() {
+	const [loading, setLoading] = useState(false);
 	const [credentials, setCredentials] = React.useState({
 		firstName: "",
 		lastName: "",
@@ -44,7 +46,6 @@ export default function SignUp() {
 		const json = await response.json();
 		console.log(json);
 		if (json.success) {
-			//save the auth toke to local storage and redirect
 			localStorage.setItem("token", json.authToken);
 			navigate("/login");
 		} else {
@@ -64,6 +65,12 @@ export default function SignUp() {
 	const handleModeChange = (newMode) => {
 		setMode(newMode);
 		localStorage.setItem("darkModeEnabled", newMode);
+	};
+
+	const handleClick = () => {
+		if (!loading) {
+			setLoading(true);
+		}
 	};
 
 	return (
@@ -155,14 +162,26 @@ export default function SignUp() {
 								/>
 							</Grid>
 						</Grid>
-						<Button
-							type="submit"
-							fullWidth
-							variant="contained"
-							sx={{ mt: 3, mb: 2 }}
-						>
-							Sign Up
-						</Button>
+						<Box>
+							<Button
+								fullWidth
+								onClick={handleClick}
+								sx={{ mt: 3, mb: 2 }}
+								type="submit"
+								variant="contained"
+							>
+								Sign Up
+							</Button>
+							{loading && (
+								<LinearProgress
+									sx={{
+										borderBottomLeftRadius: 4,
+										borderBottomRightRadius: 4,
+										mt: -2.5,
+									}}
+								/>
+							)}
+						</Box>
 						<Grid container justifyContent="flex-end">
 							<Grid item>
 								<Link component={RouterLink} to="/login" variant="body2">

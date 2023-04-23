@@ -14,8 +14,10 @@ import { ThemeProvider } from "@mui/material/styles";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import { themeOptions } from "../styles/themeOptions";
+import { LinearProgress } from "@mui/material";
 
 export default function Login() {
+	const [loading, setLoading] = useState(false);
 	const [credentials, setCredentials] = useState({ email: "", password: "" });
 	let navigate = useNavigate();
 
@@ -54,6 +56,12 @@ export default function Login() {
 	const handleModeChange = (newMode) => {
 		setMode(newMode);
 		localStorage.setItem("darkModeEnabled", newMode);
+	};
+
+	const handleClick = () => {
+		if (!loading) {
+			setLoading(true);
+		}
 	};
 
 	return (
@@ -105,14 +113,26 @@ export default function Login() {
 							value={credentials.password}
 							onChange={onChange}
 						/>
-						<Button
-							type="submit"
-							fullWidth
-							variant="contained"
-							sx={{ mt: 3, mb: 2 }}
-						>
-							Log In
-						</Button>
+						<Box>
+							<Button
+								fullWidth
+								onClick={handleClick}
+								sx={{ mt: 3, mb: 2 }}
+								type="submit"
+								variant="contained"
+							>
+								Log In
+							</Button>
+							{loading && (
+								<LinearProgress
+									sx={{
+										borderBottomLeftRadius: 4,
+										borderBottomRightRadius: 4,
+										mt: -2.5,
+									}}
+								/>
+							)}
+						</Box>
 						<Grid container>
 							<Grid item xs>
 								<Link component={RouterLink} to="/" variant="body2">

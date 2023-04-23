@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import LinearProgress from "@mui/material/LinearProgress";
 import { Icon } from "@iconify/react";
 import { useNavigate } from "react-router-dom";
 import { brown } from "../styles/palette";
 import { useCart, useDispatchCart } from "./ContextReducer";
 
 export default function Checkout() {
+	const [loading, setLoading] = useState(false);
 	let navigate = useNavigate();
 
 	function loadScript(src) {
@@ -75,6 +78,7 @@ export default function Checkout() {
 				);
 				console.log("JSON RESPONSE:::::", response.status);
 				if (response.status === 200) {
+					setLoading(false);
 					dispatch({ type: "DROP" });
 				}
 			},
@@ -96,20 +100,25 @@ export default function Checkout() {
 	const handleClick = () => {
 		if (!localStorage.getItem("token")) {
 			navigate("/login");
-		} else {
+		} else if (localStorage.getItem("token") && !loading) {
 			displayRazorpay();
+			setLoading(true);
 		}
 	};
 
 	return (
 		<div>
-			<Button
-				onClick={handleClick}
-				startIcon={<Icon icon="ic:outline-shopping-cart-checkout" />}
-				variant="contained"
-			>
-				Checkout
-			</Button>
+			<Box maxWidth={135}>
+				<Button
+					disabled={loading}
+					onClick={handleClick}
+					startIcon={<Icon icon="ic:outline-shopping-cart-checkout" />}
+					variant="contained"
+				>
+					Checkout
+				</Button>
+				{loading && <LinearProgress sx={{ mt: -0.5 }} />}
+			</Box>
 		</div>
 	);
 }

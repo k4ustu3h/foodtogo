@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
-import FilledInput from "@mui/material/FilledInput";
 import FoodItems from "../components/FoodItems";
 import Footer from "../components/Footer";
-import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Unstable_Grid2";
-import IconButton from "@mui/material/IconButton";
-import InputAdornment from "@mui/material/InputAdornment";
-import InputLabel from "@mui/material/InputLabel";
 import Navbar from "../components/NavBar";
 import Typography from "@mui/material/Typography";
-import { Icon } from "@iconify/react";
-import { Player } from "@lottiefiles/react-lottie-player";
 import { ThemeProvider } from "@mui/material";
+import HeroSection from "../components/HeroSection";
 import { themeOptions } from "../styles/themeOptions";
 
 export default function Home() {
@@ -53,96 +46,16 @@ export default function Home() {
 		<ThemeProvider theme={themeOptions(mode)}>
 			<CssBaseline />
 			<Navbar />
-			<Box
-				sx={{
-					width: "100%",
-					minHeight: "100vh",
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "center",
-					padding: { xs: 2, md: 24 },
+			<HeroSection
+				searchOnChange={(e) => {
+					setSearch(e.target.value);
 				}}
-			>
-				<Grid
-					container
-					spacing={6}
-					sx={{
-						display: "flex",
-						alignItems: { xs: "flex-start", md: "center" },
-						flexDirection: { xs: "column-reverse", md: "row" },
-						maxWidth: { xs: "100%", md: 1280 },
-					}}
-				>
-					<Grid xs={12} md={6} sx={{ pb: { xs: 2, md: 42 } }}>
-						<Typography
-							variant="h3"
-							fontWeight={700}
-							pb={6}
-							maxWidth={512}
-							color="primary.main"
-						>
-							Hungry? You're in the right place
-						</Typography>
-						<Typography variant="h6" pb={4} maxWidth={720}>
-							Be it healthy or junk food, we offer a wide range of cuisines to
-							satisfy your taste buds.
-						</Typography>
-						<Button
-							variant="contained"
-							color="primary"
-							href="#menu"
-							sx={{ width: { xs: "100%", md: 200 } }}
-						>
-							Take Me to the Menu
-						</Button>
-						<Box sx={{ mt: 8 }}>
-							<FormControl sx={{ width: "100%" }}>
-								<InputLabel htmlFor="search-box" sx={{ ml: 4, mt: 0.5 }}>
-									Search
-								</InputLabel>
-								<FilledInput
-									id="search-box"
-									type="search"
-									disableUnderline
-									aria-label="Search"
-									value={search}
-									onChange={(e) => {
-										setSearch(e.target.value);
-									}}
-									label="Search"
-									sx={{ pl: 2, pb: 1, borderRadius: 8 }}
-									endAdornment={
-										<InputAdornment
-											position="end"
-											sx={{
-												visibility: search ? "visible" : "hidden",
-												mt: 1,
-												mr: 1,
-											}}
-										>
-											<IconButton
-												onClick={() => {
-													setSearch("");
-												}}
-												edge="end"
-											>
-												<Icon icon="ic:outline-close" width="24" />
-											</IconButton>
-										</InputAdornment>
-									}
-								/>
-							</FormControl>
-						</Box>
-					</Grid>
-					<Grid xs={12} md={6} sx={{ mt: { xs: 8, md: 20 } }}>
-						<Player
-							autoplay
-							loop
-							src="https://assets6.lottiefiles.com/packages/lf20_tll0j4bb.json"
-						></Player>
-					</Grid>
-				</Grid>
-			</Box>
+				searchOnClick={() => {
+					setSearch("");
+				}}
+				searchValue={search}
+				searchVisibility={search ? "visible" : "hidden"}
+			/>
 			<Container id="menu">
 				{foodCat !== []
 					? foodCat.map((data) => {

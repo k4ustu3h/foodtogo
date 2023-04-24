@@ -12,6 +12,7 @@ import Stack from "@mui/material/Stack";
 import Toolbar from "@mui/material/Toolbar";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Icon } from "@iconify/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
@@ -32,6 +33,8 @@ function ElevationScroll(props) {
 
 export default function NavBar(props) {
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+	const isSmallScreen = useMediaQuery("(max-width: 430px)");
 
 	const handleOpenUserMenu = (event) => {
 		setAnchorElUser(event.currentTarget);
@@ -93,6 +96,7 @@ export default function NavBar(props) {
 									<>
 										<Button
 											component={RouterLink}
+											size={isSmallScreen ? "small" : "medium"}
 											sx={{ color: "text.primary" }}
 											to="/signup"
 										>
@@ -100,6 +104,7 @@ export default function NavBar(props) {
 										</Button>
 										<Button
 											component={RouterLink}
+											size={isSmallScreen ? "small" : "medium"}
 											to="/login"
 											variant="contained"
 										>

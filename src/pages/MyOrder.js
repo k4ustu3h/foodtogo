@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "@dotlottie/player-component";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -13,9 +14,8 @@ import { Button, ThemeProvider } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
+import tumbleweed from "../assets/animations/tumbleweed.lottie";
 import { themeOptions } from "../styles/themeOptions";
-import { Player } from "@lottiefiles/react-lottie-player";
-
 export default function MyOrder() {
 	const [orderData, setOrderData] = useState({});
 
@@ -125,19 +125,9 @@ export default function MyOrder() {
 											xs={12}
 											sx={{ pt: 6, pb: 10, textAlign: "center" }}
 										>
-											<Player
-												autoplay
-												loop
-												src="https://assets7.lottiefiles.com/private_files/lf30_bn5winlb.json"
-												style={{
-													height: "400px",
-													margin: "0 auto",
-													maxWidth: "600px",
-													width: "100%",
-												}}
-											/>
+											<dotlottie-player autoplay loop src={tumbleweed} />
 											<Typography color="primary" variant="h3">
-												Zero, zip, zilch , nada.
+												Zero, zip, zilch, nada.
 											</Typography>
 											<Typography gutterBottom variant="h3">
 												Still haven't decided what to order?

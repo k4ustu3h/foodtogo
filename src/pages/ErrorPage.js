@@ -1,13 +1,14 @@
 import React, { useState } from "react";
+import "@dotlottie/player-component";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import { Link as RouterLink } from "react-router-dom";
-import { Player } from "@lottiefiles/react-lottie-player";
 import { ThemeProvider } from "@mui/material";
-import { themeOptions } from "../styles/themeOptions";
 import Footer from "../components/Footer";
+import astronaut from "../assets/animations/astronaut.lottie";
+import { themeOptions } from "../styles/themeOptions";
 
 export default function ErrorPage() {
 	const [mode, setMode] = useState(() => {
@@ -35,12 +36,7 @@ export default function ErrorPage() {
 				}}
 			>
 				<Box pt={6} pb={10} textAlign="center">
-					<Player
-						autoplay
-						loop
-						src="https://assets2.lottiefiles.com/packages/lf20_ydo1amjm.json"
-						style={{ height: 400 }}
-					></Player>
+					<dotlottie-player autoplay loop src={astronaut} />
 					<Typography color="primary" variant="h3">
 						Whoops!
 					</Typography>

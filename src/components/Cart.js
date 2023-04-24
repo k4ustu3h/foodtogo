@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "@dotlottie/player-component";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import Checkout from "./Checkout";
@@ -9,7 +10,7 @@ import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
-import { Player } from "@lottiefiles/react-lottie-player";
+import emptyCart from "../assets/animations/empty_cart.lottie";
 import { useCart, useDispatchCart } from "./ContextReducer";
 
 export default function Cart() {
@@ -61,12 +62,12 @@ export default function Cart() {
 						}}
 					>
 						<Box pt={6} pb={10} textAlign="center">
-							<Player
+							<dotlottie-player
 								autoplay
 								loop
-								src="https://assets1.lottiefiles.com/packages/lf20_xNEYcvnqso.json"
+								src={emptyCart}
 								style={{ height: 400 }}
-							></Player>
+							/>
 							<Typography color="primary" variant="h4">
 								Houston, we have a problem!
 							</Typography>

@@ -1,4 +1,5 @@
 import React from "react";
+import "@dotlottie/player-component";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import FilledInput from "@mui/material/FilledInput";
@@ -9,7 +10,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
-import { Player } from "@lottiefiles/react-lottie-player";
+import healthyOrJunk from "../assets/animations/healthy_or_junk.lottie";
 
 export default function HeroSection(props) {
 	return (
@@ -88,11 +89,7 @@ export default function HeroSection(props) {
 					</Box>
 				</Grid>
 				<Grid xs={12} md={6} sx={{ mt: { xs: 8, md: 20 } }}>
-					<Player
-						autoplay
-						loop
-						src="https://assets6.lottiefiles.com/packages/lf20_tll0j4bb.json"
-					></Player>
+					<dotlottie-player autoplay loop src={healthyOrJunk} />
 				</Grid>
 			</Grid>
 		</Box>

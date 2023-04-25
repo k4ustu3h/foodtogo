@@ -153,43 +153,41 @@ export default function MyOrder() {
 											</Grid>
 										</>
 									) : (
-										<Container maxWidth="md">
-											<Grid
-												alignItems="center"
-												container
-												direction="column"
-												justifyContent="center"
-												style={{ height: "100vh" }}
-											>
-												<Grid
-													item
-													xs={12}
-													sx={{ pt: 6, pb: 10, textAlign: "center" }}
-												>
-													<dotlottie-player autoplay loop src={tumbleweed} />
-													<Typography color="primary" variant="h3">
-														Zero, zip, zilch, nada.
-													</Typography>
-													<Typography gutterBottom variant="h3">
-														Still haven't decided what to order?
-													</Typography>
-													<Typography color="textSecondary" variant="subtitle1">
-														Go to the homepage to look at the mouth
-														watering-dishes that we have to offer
-													</Typography>
-													<Box mt={3}>
-														<Button
-															color="primary"
-															component={RouterLink}
-															to="/"
-															variant="contained"
-														>
-															Return to the homepage
-														</Button>
-													</Box>
-												</Grid>
-											</Grid>
-										</Container>
+										<Box
+											sx={{
+												alignItems: "center",
+												display: "flex",
+												justifyContent: "center",
+												minHeight: "100vh",
+												pt: { xs: 2, md: "64px" },
+												px: { xs: 2, md: 24 },
+												width: "100%",
+											}}
+										>
+											<Box pt={6} pb={10} textAlign="center">
+												<dotlottie-player autoplay loop src={tumbleweed} />
+												<Typography color="primary" variant="h3">
+													Zero, zip, zilch, nada.
+												</Typography>
+												<Typography gutterBottom variant="h3">
+													Still haven't decided what to order?
+												</Typography>
+												<Typography color="textSecondary" variant="subtitle1">
+													Go to the homepage to look at the mouth
+													watering-dishes that we have to offer
+												</Typography>
+												<Box mt={3}>
+													<Button
+														color="primary"
+														component={RouterLink}
+														to="/"
+														variant="contained"
+													>
+														Return to the homepage
+													</Button>
+												</Box>
+											</Box>
+										</Box>
 									)}
 								</>
 							);

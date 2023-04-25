@@ -1,8 +1,8 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from "./pages/ErrorPage";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import MyOrder from "./pages/MyOrder";
-import ErrorPage from "./pages/ErrorPage";
+import MyOrders from "./pages/MyOrders";
 import SignUp from "./pages/SignUp";
 import { CartProvider } from "./components/ContextReducer";
 
@@ -17,8 +17,8 @@ const router = createBrowserRouter([
 		element: <Login />,
 	},
 	{
-		path: "/myorder",
-		element: <MyOrder />,
+		path: "/myorders",
+		element: <MyOrders />,
 	},
 	{
 		path: "/signup",

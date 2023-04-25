@@ -18,7 +18,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
 import tumbleweed from "../assets/animations/tumbleweed.lottie";
 import { themeOptions } from "../styles/themeOptions";
-export default function MyOrder() {
+export default function MyOrders() {
 	const [orderData, setOrderData] = useState({});
 	const [showNoOrders, setShowNoOrders] = useState(false);
 

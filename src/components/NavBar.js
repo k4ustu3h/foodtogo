@@ -46,7 +46,7 @@ export default function NavBar(props) {
 
 	const settings = [
 		{ link: "/profile", name: "Profile" },
-		{ link: "/myOrder", name: "My Orders" },
+		{ link: "/myorders", name: "My Orders" },
 	];
 
 	localStorage.setItem("temp", "first");

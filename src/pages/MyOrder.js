@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "@dotlottie/player-component";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
@@ -9,15 +10,25 @@ import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Unstable_Grid2";
+import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
-import { Button, ThemeProvider } from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import { ThemeProvider } from "@mui/material";
 import Footer from "../components/Footer";
 import Navbar from "../components/NavBar";
 import tumbleweed from "../assets/animations/tumbleweed.lottie";
 import { themeOptions } from "../styles/themeOptions";
 export default function MyOrder() {
 	const [orderData, setOrderData] = useState({});
+	const [showNoOrders, setShowNoOrders] = useState(false);
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setShowNoOrders(true);
+		}, 5000);
+
+		return () => clearTimeout(timer);
+	}, []);
 
 	const fetchMyOrder = async () => {
 		console.log(localStorage.getItem("userEmail"));
@@ -112,43 +123,75 @@ export default function MyOrder() {
 										);
 									})
 							) : (
-								<Container maxWidth="md">
-									<Grid
-										alignItems="center"
-										container
-										direction="column"
-										justifyContent="center"
-										style={{ height: "100vh" }}
-									>
-										<Grid
-											item
-											xs={12}
-											sx={{ pt: 6, pb: 10, textAlign: "center" }}
-										>
-											<dotlottie-player autoplay loop src={tumbleweed} />
-											<Typography color="primary" variant="h3">
-												Zero, zip, zilch, nada.
+								<>
+									{!showNoOrders ? (
+										<>
+											<Typography gutterBottom variant="h4">
+												<Skeleton variant="text" width="40%" />
 											</Typography>
-											<Typography gutterBottom variant="h3">
-												Still haven't decided what to order?
+											<Typography variant="h6">
+												<Skeleton variant="text" width="60%" />
 											</Typography>
-											<Typography color="textSecondary" variant="subtitle1">
-												Go to the homepage to look at the mouth watering-dishes
-												that we have to offer
-											</Typography>
-											<Box mt={3}>
-												<Button
-													color="primary"
-													component={RouterLink}
-													to="/"
-													variant="contained"
+											<Divider sx={{ my: 2 }} />
+											<Grid container spacing={2} sx={{ mb: 4 }}>
+												{Array.from(Array(8)).map((_, index) => (
+													<Grid key={index} xs={12} sm={6} md={4} lg={3}>
+														<Skeleton
+															variant="rectangular"
+															width="100%"
+															sx={{ height: 176, borderRadius: 4 }}
+														/>
+														<Skeleton
+															variant="text"
+															width="80%"
+															sx={{ mt: 1 }}
+														/>
+														<Skeleton variant="text" width="30%" />
+														<Skeleton variant="text" width="20%" />
+													</Grid>
+												))}
+											</Grid>
+										</>
+									) : (
+										<Container maxWidth="md">
+											<Grid
+												alignItems="center"
+												container
+												direction="column"
+												justifyContent="center"
+												style={{ height: "100vh" }}
+											>
+												<Grid
+													item
+													xs={12}
+													sx={{ pt: 6, pb: 10, textAlign: "center" }}
 												>
-													Return to the homepage
-												</Button>
-											</Box>
-										</Grid>
-									</Grid>
-								</Container>
+													<dotlottie-player autoplay loop src={tumbleweed} />
+													<Typography color="primary" variant="h3">
+														Zero, zip, zilch, nada.
+													</Typography>
+													<Typography gutterBottom variant="h3">
+														Still haven't decided what to order?
+													</Typography>
+													<Typography color="textSecondary" variant="subtitle1">
+														Go to the homepage to look at the mouth
+														watering-dishes that we have to offer
+													</Typography>
+													<Box mt={3}>
+														<Button
+															color="primary"
+															component={RouterLink}
+															to="/"
+															variant="contained"
+														>
+															Return to the homepage
+														</Button>
+													</Box>
+												</Grid>
+											</Grid>
+										</Container>
+									)}
+								</>
 							);
 					  })
 					: ""}

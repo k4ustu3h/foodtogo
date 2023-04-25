@@ -61,7 +61,11 @@ export default function NavBar(props) {
 	return (
 		<React.Fragment>
 			<ElevationScroll {...props}>
-				<AppBar position="fixed">
+				<AppBar
+					color="transparent"
+					position="fixed"
+					sx={{ backdropFilter: "blur(6px)" }}
+				>
 					<Container maxWidth="xl">
 						<Toolbar disableGutters>
 							<Box sx={{ display: "flex", mr: 1 }}>

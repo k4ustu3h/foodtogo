@@ -108,7 +108,7 @@ export default function Checkout() {
 
 	return (
 		<div>
-			<Box maxWidth={135}>
+			<Box maxWidth={128}>
 				<Button
 					disabled={loading}
 					onClick={handleClick}
@@ -119,7 +119,16 @@ export default function Checkout() {
 				>
 					Checkout
 				</Button>
-				{loading && <LinearProgress sx={{ mt: -0.5 }} />}
+				{loading && (
+					<LinearProgress
+						sx={{
+							ml: 1,
+							mt: -0.52,
+							borderBottomLeftRadius: 4,
+							borderBottomRightRadius: 4,
+						}}
+					/>
+				)}
 			</Box>
 		</div>
 	);

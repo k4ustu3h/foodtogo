@@ -128,7 +128,9 @@ export default function Login() {
 									sx={{
 										borderBottomLeftRadius: 4,
 										borderBottomRightRadius: 4,
+										ml: 1,
 										mt: -2.5,
+										width: "95.3%",
 									}}
 								/>
 							)}

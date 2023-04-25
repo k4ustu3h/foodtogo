@@ -181,7 +181,7 @@ export default function MyOrders() {
 														color="primary"
 														component={RouterLink}
 														to="/"
-														variant="contained"
+														variant="filled"
 													>
 														Return to the homepage
 													</Button>

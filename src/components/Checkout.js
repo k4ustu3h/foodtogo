@@ -112,8 +112,10 @@ export default function Checkout() {
 				<Button
 					disabled={loading}
 					onClick={handleClick}
-					startIcon={<Icon icon="ic:outline-shopping-cart-checkout" />}
-					variant="contained"
+					startIcon={
+						<Icon icon="ic:outline-shopping-cart-checkout" width={18} />
+					}
+					variant="filled"
 				>
 					Checkout
 				</Button>

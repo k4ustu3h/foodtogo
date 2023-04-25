@@ -54,7 +54,7 @@ export default function ErrorPage() {
 							color="primary"
 							component={RouterLink}
 							to="/"
-							variant="contained"
+							variant="filled"
 						>
 							Return to the homepage
 						</Button>

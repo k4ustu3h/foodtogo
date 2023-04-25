@@ -48,12 +48,7 @@ export default function HeroSection(props) {
 						Be it healthy or junk food, we offer a wide range of cuisines to
 						satisfy your taste buds.
 					</Typography>
-					<Button
-						color="primary"
-						href="#menu"
-						sx={{ width: { xs: "100%", md: 200 } }}
-						variant="contained"
-					>
+					<Button color="primary" href="#menu" variant="filled">
 						Take Me to the Menu
 					</Button>
 					<Box sx={{ mt: 8 }}>

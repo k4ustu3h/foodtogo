@@ -44,4 +44,31 @@ export const themeOptions = (mode) =>
 				color: "transparent",
 			},
 		},
+		components: {
+			MuiButton: {
+				variants: [
+					{
+						props: { variant: "filled" },
+						style: {
+							color: "white",
+							paddingLeft: 24,
+							paddingRight: 24,
+							borderRadius: 20,
+							backgroundColor: brown[500],
+							":hover": { backgroundColor: brown[700], color: "white" },
+							textTransform: "none",
+						},
+					},
+					{
+						props: { variant: "text" },
+						style: {
+							paddingLeft: 24,
+							paddingRight: 24,
+							borderRadius: 20,
+							textTransform: "none",
+						},
+					},
+				],
+			},
+		},
 	});

@@ -168,7 +168,7 @@ export default function SignUp() {
 								onClick={handleClick}
 								sx={{ mt: 3, mb: 2 }}
 								type="submit"
-								variant="contained"
+								variant="filled"
 							>
 								Sign Up
 							</Button>

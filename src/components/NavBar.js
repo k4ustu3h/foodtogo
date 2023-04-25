@@ -106,7 +106,7 @@ export default function NavBar(props) {
 											component={RouterLink}
 											size={isSmallScreen ? "small" : "medium"}
 											to="/login"
-											variant="contained"
+											variant="filled"
 										>
 											Login
 										</Button>

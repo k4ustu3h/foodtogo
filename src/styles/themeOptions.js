@@ -50,6 +50,7 @@ export const themeOptions = (mode) =>
 					{
 						props: { variant: "filled" },
 						style: {
+							height: 40,
 							color: "white",
 							paddingLeft: 24,
 							paddingRight: 24,
@@ -62,8 +63,9 @@ export const themeOptions = (mode) =>
 					{
 						props: { variant: "text" },
 						style: {
-							paddingLeft: 24,
-							paddingRight: 24,
+							height: 40,
+							paddingLeft: 12,
+							paddingRight: 12,
 							borderRadius: 20,
 							textTransform: "none",
 						},

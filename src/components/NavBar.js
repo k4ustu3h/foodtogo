@@ -34,7 +34,7 @@ function ElevationScroll(props) {
 export default function NavBar(props) {
 	const [anchorElUser, setAnchorElUser] = React.useState(null);
 
-	const isSmallScreen = useMediaQuery("(max-width: 430px)");
+	const isSmallScreen = useMediaQuery("(max-width: 450px)");
 
 	const handleOpenUserMenu = (event) => {
 		setAnchorElUser(event.currentTarget);
@@ -47,6 +47,11 @@ export default function NavBar(props) {
 	const settings = [
 		{ link: "/profile", name: "Profile" },
 		{ link: "/myorders", name: "My Orders" },
+	];
+
+	const userMenu = [
+		{ link: "/signup", name: "Sign Up" },
+		{ link: "/login", name: "Login" },
 	];
 
 	localStorage.setItem("temp", "first");
@@ -98,22 +103,62 @@ export default function NavBar(props) {
 								<Divider orientation="vertical" variant="middle" flexItem />
 								{!localStorage.getItem("token") ? (
 									<>
-										<Button
-											component={RouterLink}
-											size={isSmallScreen ? "small" : "medium"}
-											sx={{ color: "text.primary" }}
-											to="/signup"
+										<Stack
+											direction="row"
+											display={isSmallScreen ? "none" : "inherit"}
+											spacing={2}
 										>
-											Sign Up
-										</Button>
-										<Button
-											component={RouterLink}
-											size={isSmallScreen ? "small" : "medium"}
-											to="/login"
-											variant="filled"
-										>
-											Login
-										</Button>
+											<Button
+												component={RouterLink}
+												sx={{ color: "text.primary" }}
+												to="/signup"
+											>
+												Sign Up
+											</Button>
+											<Button
+												component={RouterLink}
+												to="/login"
+												variant="filled"
+											>
+												Login
+											</Button>
+										</Stack>
+										<Box display={isSmallScreen ? "inherit" : "none"}>
+											<Tooltip title="Open settings">
+												<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+													<Avatar>
+														<Icon icon="ic:round-person-outline" width={24} />
+													</Avatar>
+												</IconButton>
+											</Tooltip>
+											<Menu
+												anchorEl={anchorElUser}
+												anchorOrigin={{ vertical: "top", horizontal: "right" }}
+												id="menu-appbar"
+												keepMounted
+												onClose={handleCloseUserMenu}
+												open={Boolean(anchorElUser)}
+												sx={{ mt: "45px" }}
+												transformOrigin={{
+													vertical: "top",
+													horizontal: "right",
+												}}
+											>
+												{userMenu.map((item) => (
+													<Box
+														component={RouterLink}
+														key={item.name}
+														to={item.link}
+													>
+														<MenuItem onClick={handleCloseUserMenu}>
+															<Typography textAlign="center">
+																{item.name}
+															</Typography>
+														</MenuItem>
+													</Box>
+												))}
+											</Menu>
+										</Box>
 									</>
 								) : (
 									<>

@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { FormControlLabel, Switch } from "@mui/material";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Switch from "@mui/material/Switch";
 
-function DarkModeSwitch({ onChange }) {
-	const [darkModeEnabled, setDarkModeEnabled] = useState(
-		localStorage.getItem("darkModeEnabled") ||
+export default function ThemeToggle({ onChange }) {
+	const [themeMode, setThemeMode] = useState(
+		localStorage.getItem("themeMode") ||
 			(window.matchMedia &&
 			window.matchMedia("(prefers-color-scheme: dark)").matches
 				? "dark"
@@ -11,39 +12,37 @@ function DarkModeSwitch({ onChange }) {
 	);
 
 	useEffect(() => {
-		const savedPreference = localStorage.getItem("darkModeEnabled");
+		const savedPreference = localStorage.getItem("themeMode");
 		if (savedPreference) {
-			setDarkModeEnabled(savedPreference);
+			setThemeMode(savedPreference);
 			onChange(savedPreference);
 		}
 	}, [onChange]);
 
 	const handleChange = (event) => {
 		const newPreference = event.target.checked ? "dark" : "light";
-		setDarkModeEnabled(newPreference);
+		setThemeMode(newPreference);
 		onChange(newPreference);
 
-		localStorage.setItem("darkModeEnabled", newPreference);
+		localStorage.setItem("themeMode", newPreference);
 	};
 
 	if (
 		typeof window !== "undefined" &&
 		!window.matchMedia("(prefers-color-scheme: dark)").matches &&
-		darkModeEnabled !== "dark" &&
-		darkModeEnabled !== "light"
+		themeMode !== "dark" &&
+		themeMode !== "light"
 	) {
-		setDarkModeEnabled("dark");
+		setThemeMode("dark");
 		onChange("dark");
 	}
 
 	return (
 		<FormControlLabel
 			control={
-				<Switch checked={darkModeEnabled === "dark"} onChange={handleChange} />
+				<Switch checked={themeMode === "dark"} onChange={handleChange} />
 			}
 			label="Dark Mode"
 		/>
 	);
 }
-
-export default DarkModeSwitch;

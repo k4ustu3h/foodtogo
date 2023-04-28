@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
 import { Link as RouterLink } from "react-router-dom";
-import DarkModeSwitch from "./DarkModeSwitch";
+import ThemeToggle from "./ThemeToggle";
 
 export default function Footer(props) {
 	const links = [
@@ -60,7 +60,7 @@ export default function Footer(props) {
 					})}
 				</Box>
 				<Stack direction="row" spacing={2}>
-					<DarkModeSwitch onChange={props.onChange} />
+					<ThemeToggle onChange={props.onChange} />
 					<IconButton href="https://facebook.com/">
 						<Icon icon="simple-icons:facebook" width="24" />
 					</IconButton>

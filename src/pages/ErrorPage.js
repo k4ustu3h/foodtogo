@@ -12,13 +12,13 @@ import { themeOptions } from "../styles/themeOptions";
 
 export default function ErrorPage() {
 	const [mode, setMode] = useState(() => {
-		const storedMode = localStorage.getItem("darkModeEnabled");
+		const storedMode = localStorage.getItem("themeMode");
 		return storedMode !== null ? storedMode : "dark";
 	});
 
 	const handleModeChange = (newMode) => {
 		setMode(newMode);
-		localStorage.setItem("darkModeEnabled", newMode);
+		localStorage.setItem("themeMode", newMode);
 	};
 
 	return (

@@ -22,7 +22,10 @@
 	"devDependencies": {
 		"@iconify/react": "^4.1.0",
 		"@vitejs/plugin-react": "^4.0.0",
-		"vite": "^4.3.3"
+		"eslint": "8.39.0",
+		"eslint-config-react-app": "7.0.1",
+		"vite": "^4.3.3",
+		"vite-plugin-eslint": "1.8.1"
 	},
 	"description": "Not just another food delivery website",
 	"main": "index.js",

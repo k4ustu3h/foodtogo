@@ -5,7 +5,7 @@
 
 body {
 	margin: 0;
-	font-family: "Plus Jakarta Sans";
+	font-family: "Plus Jakarta Sans", sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

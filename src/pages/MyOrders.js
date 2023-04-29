@@ -194,7 +194,7 @@ export default function MyOrders() {
 					  })
 					: ""}
 			</Container>
-			<Footer onChange={handleModeChange}></Footer>
+			<Footer onClick={handleModeChange} />
 		</ThemeProvider>
 	);
 }

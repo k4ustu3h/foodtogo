@@ -194,7 +194,7 @@ export default function SignUp() {
 					</Box>
 				</Box>
 			</Container>
-			<Footer onChange={handleModeChange}></Footer>
+			<Footer onClick={handleModeChange} />
 		</ThemeProvider>
 	);
 }

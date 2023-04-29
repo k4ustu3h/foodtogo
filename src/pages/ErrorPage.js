@@ -61,7 +61,7 @@ export default function ErrorPage() {
 					</Box>
 				</Box>
 			</Box>
-			<Footer onChange={handleModeChange}></Footer>
+			<Footer onClick={handleModeChange} />
 		</ThemeProvider>
 	);
 }

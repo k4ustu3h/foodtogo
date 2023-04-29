@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import { Icon } from "@iconify/react";
 
-export default function ThemeToggle({ onChange }) {
+export default function ThemeToggle({ onClick }) {
 	const [themeMode, setThemeMode] = useState(
 		localStorage.getItem("themeMode") ||
 			(window.matchMedia &&
@@ -15,15 +16,14 @@ export default function ThemeToggle({ onChange }) {
 		const savedPreference = localStorage.getItem("themeMode");
 		if (savedPreference) {
 			setThemeMode(savedPreference);
-			onChange(savedPreference);
+			onClick(savedPreference);
 		}
-	}, [onChange]);
+	}, [onClick]);
 
-	const handleChange = (event) => {
-		const newPreference = event.target.checked ? "dark" : "light";
+	const handleClick = () => {
+		const newPreference = themeMode === "dark" ? "light" : "dark";
 		setThemeMode(newPreference);
-		onChange(newPreference);
-
+		onClick(newPreference);
 		localStorage.setItem("themeMode", newPreference);
 	};
 
@@ -34,15 +34,18 @@ export default function ThemeToggle({ onChange }) {
 		themeMode !== "light"
 	) {
 		setThemeMode("dark");
-		onChange("dark");
+		onClick("dark");
 	}
 
 	return (
-		<FormControlLabel
-			control={
-				<Switch checked={themeMode === "dark"} onChange={handleChange} />
-			}
-			label="Dark Mode"
-		/>
+		<Tooltip title="Toggle theme">
+			<IconButton onClick={handleClick}>
+				{themeMode === "dark" ? (
+					<Icon icon="ic:outline-dark-mode" />
+				) : (
+					<Icon icon="ic:outline-light-mode" />
+				)}
+			</IconButton>
+		</Tooltip>
 	);
 }

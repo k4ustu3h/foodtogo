@@ -52,17 +52,11 @@ export default function FoodItems(props) {
 		setSize(e.target.value);
 	};
 	const handleAddToCart = async () => {
-		let food = [];
-		for (const item of data) {
-			if (item.id === foodItem._id) {
-				food = item;
-
-				break;
-			}
-		}
+		let food = data.find((item) => item.id === foodItem._id);
 		console.log(food);
 		console.log(new Date());
-		if (food !== []) {
+
+		if (food) {
 			if (food.size === size) {
 				await dispatch({
 					type: "UPDATE",
@@ -70,8 +64,7 @@ export default function FoodItems(props) {
 					price: finalPrice,
 					qty: qty,
 				});
-				return;
-			} else if (food.size !== size) {
+			} else {
 				await dispatch({
 					type: "ADD",
 					id: foodItem._id,
@@ -82,19 +75,17 @@ export default function FoodItems(props) {
 					img: props.ImgSrc,
 				});
 				console.log("Size different so simply ADD one more to the list");
-				return;
 			}
-			return;
+		} else {
+			await dispatch({
+				type: "ADD",
+				id: foodItem._id,
+				name: foodItem.name,
+				price: finalPrice,
+				qty: qty,
+				size: size,
+			});
 		}
-
-		await dispatch({
-			type: "ADD",
-			id: foodItem._id,
-			name: foodItem.name,
-			price: finalPrice,
-			qty: qty,
-			size: size,
-		});
 	};
 
 	const handleExpandClick = () => {

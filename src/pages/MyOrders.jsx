@@ -64,7 +64,7 @@ export default function MyOrders() {
 			<CssBaseline />
 			<Navbar />
 			<Container sx={{ my: 4 }}>
-				{orderData !== {}
+				{orderData
 					? Array(orderData).map((data) => {
 							return data.orderData ? (
 								data.orderData.order_data

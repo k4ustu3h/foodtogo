@@ -82,12 +82,11 @@ export default function NavBar(props) {
 								sx={{
 									display: "flex",
 									flexGrow: { xs: 1, md: 0 },
-									fontFamily: "sans-serif",
-									fontWeight: 700,
+									fontFamily: "Lobster",
 									mr: 2,
 								}}
 								to="/"
-								variant="h6"
+								variant="h4"
 							>
 								Food To Go
 							</Typography>

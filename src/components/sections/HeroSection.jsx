@@ -10,7 +10,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
-import healthyOrJunk from "../assets/animations/healthy_or_junk.lottie";
+import healthyOrJunk from "../../assets/animations/healthy_or_junk.lottie";
 
 export default function HeroSection(props) {
 	return (

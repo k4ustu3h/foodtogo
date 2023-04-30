@@ -3,14 +3,14 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
-import FoodItems from "../components/FoodItems";
-import Footer from "../components/Footer";
 import Grid from "@mui/material/Unstable_Grid2";
-import Navbar from "../components/NavBar";
 import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider } from "@mui/material";
-import HeroSection from "../components/HeroSection";
+import FoodItems from "../components/cards/FoodItems";
+import Footer from "../components/footer/Footer";
+import HeroSection from "../components/sections/HeroSection";
+import Navbar from "../components/header/NavBar";
 import { themeOptions } from "../styles/themeOptions";
 
 export default function Home() {

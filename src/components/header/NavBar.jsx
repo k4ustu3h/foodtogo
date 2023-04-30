@@ -16,8 +16,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Icon } from "@iconify/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import Cart from "./Cart";
-import { ScrollToTop } from "./ScrollToTop";
+import Cart from "../drawers/Cart";
+import { ScrollToTop } from "../buttons/ScrollToTop";
 
 function ElevationScroll(props) {
 	const { children } = props;

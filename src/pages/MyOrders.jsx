@@ -14,8 +14,8 @@ import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import { Link as RouterLink } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
-import Footer from "../components/Footer";
-import Navbar from "../components/NavBar";
+import Footer from "../components/footer/Footer";
+import Navbar from "../components/header/NavBar";
 import tumbleweed from "../assets/animations/tumbleweed.lottie";
 import { themeOptions } from "../styles/themeOptions";
 export default function MyOrders() {

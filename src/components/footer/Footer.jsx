@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
 import { Link as RouterLink } from "react-router-dom";
-import ThemeToggle from "./ThemeToggle";
+import ThemeToggle from "../buttons/ThemeToggle";
 
 export default function Footer(props) {
 	const links = [

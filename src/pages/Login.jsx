@@ -11,8 +11,8 @@ import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { ThemeProvider } from "@mui/material/styles";
-import Footer from "../components/Footer";
-import NavBar from "../components/NavBar";
+import Footer from "../components/footer/Footer";
+import NavBar from "../components/header/NavBar";
 import { themeOptions } from "../styles/themeOptions";
 import { LinearProgress } from "@mui/material";
 

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "@dotlottie/player-component";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
-import Checkout from "./Checkout";
 import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
@@ -10,8 +9,9 @@ import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
-import emptyCart from "../assets/animations/empty_cart.lottie";
-import { useCart, useDispatchCart } from "./ContextReducer";
+import Checkout from "../buttons/Checkout";
+import emptyCart from "../../assets/animations/empty_cart.lottie";
+import { useCart, useDispatchCart } from "../ContextReducer";
 
 export default function Cart() {
 	const [state, setState] = useState({

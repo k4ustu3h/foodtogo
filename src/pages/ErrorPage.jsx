@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Typography from "@mui/material/Typography";
 import { Link as RouterLink } from "react-router-dom";
 import { ThemeProvider } from "@mui/material";
-import Footer from "../components/Footer";
+import Footer from "../components/footer/Footer";
 import astronaut from "../assets/animations/astronaut.lottie";
 import { themeOptions } from "../styles/themeOptions";
 

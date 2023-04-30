@@ -5,9 +5,6 @@ import react from "@vitejs/plugin-react";
 export default defineConfig(() => {
 	return {
 		assetsInclude: ["**/*.lottie"],
-		build: {
-			outDir: "build",
-		},
 		plugins: [react(), eslint()],
 		server: {
 			port: 3000,

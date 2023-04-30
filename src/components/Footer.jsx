@@ -32,7 +32,7 @@ export default function Footer(props) {
 					}}
 					to="/"
 				>
-					<Icon icon="ic:outline-delivery-dining" width="64" />
+					<Icon icon="ic:twotone-delivery-dining" width="64" />
 				</Link>
 				<Box
 					sx={{

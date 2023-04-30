@@ -73,8 +73,8 @@ export default function NavBar(props) {
 				>
 					<Container maxWidth="xl">
 						<Toolbar disableGutters>
-							<Box sx={{ display: "flex", mr: 1 }}>
-								<Icon icon="ic:outline-delivery-dining" width={24} />
+							<Box sx={{ color: "primary.main", display: "flex", mr: 1 }}>
+								<Icon icon="ic:twotone-delivery-dining" width={48} />
 							</Box>
 							<Typography
 								component={RouterLink}

@@ -110,7 +110,11 @@ export default function Checkout() {
 
 	return (
 		<div>
-			<Box maxWidth={128}>
+			<Box
+				sx={{
+					maxWidth: 128,
+				}}
+			>
 				<Button
 					disabled={loading}
 					onClick={handleClick}

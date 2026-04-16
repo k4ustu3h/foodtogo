@@ -18,10 +18,14 @@ export default function Footer(props) {
 	return (
 		<Container maxWidth="lg">
 			<Box
-				display="flex"
-				flexWrap="wrap"
-				alignItems="center"
-				sx={{ justifyContent: "center", pb: 4, pt: 6 }}
+				sx={{
+					display: "flex",
+					flexWrap: "wrap",
+					alignItems: "center",
+					justifyContent: "center",
+					pb: 4,
+					pt: 6,
+				}}
 			>
 				<Link
 					component={RouterLink}

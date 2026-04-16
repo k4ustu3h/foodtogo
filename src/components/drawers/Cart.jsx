@@ -61,7 +61,13 @@ export default function Cart() {
 							width: { sm: "80vw", lg: "40vw" },
 						}}
 					>
-						<Box pt={6} pb={10} textAlign="center">
+						<Box
+							sx={{
+								pt: 6,
+								pb: 10,
+								textAlign: "center",
+							}}
+						>
 							<dotlottie-player
 								autoplay
 								loop
@@ -85,7 +91,12 @@ export default function Cart() {
 					</Box>
 				) : (
 					<>
-						<Typography variant="h3" p={3}>
+						<Typography
+							variant="h3"
+							sx={{
+								p: 3,
+							}}
+						>
 							Your Cart
 						</Typography>
 						<Stack
@@ -101,22 +112,28 @@ export default function Cart() {
 									<Container sx={{ display: "flex" }}>
 										<Typography
 											variant="subtitle1"
-											color="text.secondary"
-											flex={1}
+											sx={{
+												color: "text.secondary",
+												flex: 1,
+											}}
 										>
 											Item Price: ₹{food.price}/-
 										</Typography>
 										<Typography
 											variant="subtitle1"
-											color="text.secondary"
-											flex={1}
+											sx={{
+												color: "text.secondary",
+												flex: 1,
+											}}
 										>
 											Option: {food.size}
 										</Typography>
 										<Typography
 											variant="subtitle1"
-											color="text.secondary"
-											flex={1}
+											sx={{
+												color: "text.secondary",
+												flex: 1,
+											}}
 										>
 											Quantity: {food.qty}
 										</Typography>
@@ -129,11 +146,20 @@ export default function Cart() {
 									<Divider sx={{ my: 1 }} variant="middle" />
 								</>
 							))}
-							<Typography variant="h6" p={3}>
+							<Typography
+								variant="h6"
+								sx={{
+									p: 3,
+								}}
+							>
 								Total Price: ₹{totalPrice}/-
 							</Typography>
 						</Stack>
-						<Box p={3}>
+						<Box
+							sx={{
+								p: 3,
+							}}
+						>
 							<Checkout />
 						</Box>
 					</>

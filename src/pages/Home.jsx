@@ -59,7 +59,11 @@ export default function Home() {
 			/>
 			<Container id="menu">
 				{foodCat.length === 0 ? (
-					<Box mb={3}>
+					<Box
+						sx={{
+							mb: 3,
+						}}
+					>
 						<Typography gutterBottom variant="h4">
 							<Skeleton variant="text" width="50%" />
 						</Typography>
@@ -78,7 +82,12 @@ export default function Home() {
 										sx={{ mt: 1 }}
 									/>
 									<Skeleton variant="text" width="60%" />
-									<Box display="flex" mt={1}>
+									<Box
+										sx={{
+											display: "flex",
+											mt: 1,
+										}}
+									>
 										<Skeleton
 											variant="circular"
 											sx={{ height: 40, width: 40 }}
@@ -99,7 +108,12 @@ export default function Home() {
 				) : (
 					foodCat.map((data) => {
 						return (
-							<Box key={data._id} mb={3}>
+							<Box
+								key={data._id}
+								sx={{
+									mb: 3,
+								}}
+							>
 								<Typography gutterBottom variant="h4">
 									{data.CategoryName}
 								</Typography>

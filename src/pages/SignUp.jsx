@@ -102,7 +102,12 @@ export default function SignUp() {
 						sx={{ mt: 3 }}
 					>
 						<Grid container spacing={2}>
-							<Grid item xs={12} sm={6}>
+							<Grid
+								size={{
+									xs: 12,
+									sm: 6,
+								}}
+							>
 								<TextField
 									autoComplete="given-name"
 									name="firstName"
@@ -115,7 +120,12 @@ export default function SignUp() {
 									onChange={onChange}
 								/>
 							</Grid>
-							<Grid item xs={12} sm={6}>
+							<Grid
+								size={{
+									xs: 12,
+									sm: 6,
+								}}
+							>
 								<TextField
 									required
 									fullWidth
@@ -127,7 +137,7 @@ export default function SignUp() {
 									onChange={onChange}
 								/>
 							</Grid>
-							<Grid item xs={12}>
+							<Grid size={12}>
 								<TextField
 									required
 									fullWidth
@@ -139,7 +149,7 @@ export default function SignUp() {
 									onChange={onChange}
 								/>
 							</Grid>
-							<Grid item xs={12}>
+							<Grid size={12}>
 								<TextField
 									required
 									fullWidth
@@ -152,7 +162,7 @@ export default function SignUp() {
 									onChange={onChange}
 								/>
 							</Grid>
-							<Grid item xs={12}>
+							<Grid size={12}>
 								<TextField
 									required
 									fullWidth
@@ -187,8 +197,13 @@ export default function SignUp() {
 								/>
 							)}
 						</Box>
-						<Grid container justifyContent="flex-end">
-							<Grid item>
+						<Grid
+							container
+							sx={{
+								justifyContent: "flex-end",
+							}}
+						>
+							<Grid>
 								<Link
 									component={RouterLink}
 									to="/login"

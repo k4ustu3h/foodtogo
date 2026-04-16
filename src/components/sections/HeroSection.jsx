@@ -36,15 +36,23 @@ export default function HeroSection(props) {
 			>
 				<Grid xs={12} md={6} sx={{ pb: { xs: 2, md: 42 } }}>
 					<Typography
-						color="primary.main"
-						fontWeight={700}
-						maxWidth={512}
-						pb={6}
 						variant="h3"
+						sx={{
+							color: "primary.main",
+							fontWeight: 700,
+							maxWidth: 512,
+							pb: 6,
+						}}
 					>
 						Hungry? You're in the right place
 					</Typography>
-					<Typography variant="h6" pb={4} maxWidth={720}>
+					<Typography
+						variant="h6"
+						sx={{
+							pb: 4,
+							maxWidth: 720,
+						}}
+					>
 						Be it healthy or junk food, we offer a wide range of
 						cuisines to satisfy your taste buds.
 					</Typography>

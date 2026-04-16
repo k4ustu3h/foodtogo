@@ -108,9 +108,11 @@ export default function MyOrders() {
 																{arrayData.name}
 															</Typography>
 															<Typography
-																color="text.secondary"
-																mt={1}
 																variant="subtitle1"
+																sx={{
+																	color: "text.secondary",
+																	mt: 1,
+																}}
 															>
 																₹
 																{
@@ -119,9 +121,11 @@ export default function MyOrders() {
 																/-
 															</Typography>
 															<Typography
-																color="text.secondary"
-																mt={1}
 																variant="subtitle1"
+																sx={{
+																	color: "text.secondary",
+																	mt: 1,
+																}}
 															>
 																{arrayData.qty}{" "}
 																{arrayData.size}
@@ -132,7 +136,11 @@ export default function MyOrders() {
 											));
 										return (
 											<React.Fragment key={`${index}`}>
-												<Box mb={3}>
+												<Box
+													sx={{
+														mb: 3,
+													}}
+												>
 													<Typography
 														gutterBottom
 														variant="h4"
@@ -227,9 +235,11 @@ export default function MyOrders() {
 											}}
 										>
 											<Box
-												pt={6}
-												pb={10}
-												textAlign="center"
+												sx={{
+													pt: 6,
+													pb: 10,
+													textAlign: "center",
+												}}
 											>
 												<dotlottie-player
 													autoplay
@@ -257,7 +267,11 @@ export default function MyOrders() {
 													at the mouth watering-dishes
 													that we have to offer
 												</Typography>
-												<Box mt={3}>
+												<Box
+													sx={{
+														mt: 3,
+													}}
+												>
 													<Button
 														color="primary"
 														component={RouterLink}

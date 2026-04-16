@@ -136,7 +136,7 @@ export default function Login() {
 							)}
 						</Box>
 						<Grid container>
-							<Grid item xs>
+							<Grid size="grow">
 								<Link
 									component={RouterLink}
 									to="/"
@@ -145,7 +145,7 @@ export default function Login() {
 									Forgot password?
 								</Link>
 							</Grid>
-							<Grid item>
+							<Grid>
 								<Link
 									component={RouterLink}
 									to="/signup"

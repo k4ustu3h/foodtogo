@@ -24,12 +24,20 @@ const ExpandMore = styled((props) => {
 			<IconButton {...other} />
 		</Tooltip>
 	);
-})(({ theme, expand }) => ({
-	transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+})(({ theme }) => ({
+	transform: "rotate(180deg)",
 	marginRight: "auto",
 	transition: theme.transitions.create("transform", {
 		duration: theme.transitions.duration.shortest,
 	}),
+	variants: [
+		{
+			props: ({ expand }) => !expand,
+			style: {
+				transform: "rotate(0deg)",
+			},
+		},
+	],
 }));
 
 export default function FoodItems(props) {
@@ -113,8 +121,10 @@ export default function FoodItems(props) {
 					</Typography>
 					<Typography
 						variant="subtitle1"
-						color="text.secondary"
-						mt={1}
+						sx={{
+							color: "text.secondary",
+							mt: 1,
+						}}
 					>
 						₹{finalPrice}/-
 					</Typography>
@@ -136,8 +146,10 @@ export default function FoodItems(props) {
 					<CardContent>
 						<Typography
 							variant="body2"
-							color="text.secondary"
-							sx={{ mb: 2 }}
+							sx={{
+								color: "text.secondary",
+								mb: 2,
+							}}
 						>
 							{props.description}
 						</Typography>

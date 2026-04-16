@@ -22,9 +22,9 @@ export default function ErrorPage() {
 	};
 
 	return (
-		<ThemeProvider theme={themeOptions(mode)}>
-			<CssBaseline />
-			<Box
+        <ThemeProvider theme={themeOptions(mode)}>
+            <CssBaseline />
+            <Box
 				sx={{
 					alignItems: "center",
 					display: "flex",
@@ -35,7 +35,12 @@ export default function ErrorPage() {
 					width: "100%",
 				}}
 			>
-				<Box pt={6} pb={10} textAlign="center">
+				<Box
+                    sx={{
+                        pt: 6,
+                        pb: 10,
+                        textAlign: "center"
+                    }}>
 					<dotlottie-player autoplay loop src={astronaut} />
 					<Typography color="primary" variant="h3">
 						Whoops!
@@ -50,7 +55,9 @@ export default function ErrorPage() {
 					<Typography color="textSecondary" variant="caption">
 						(or it may be that this page hasn't been built yet)
 					</Typography>
-					<Box mt={3}>
+					<Box sx={{
+                        mt: 3
+                    }}>
 						<Button
 							color="primary"
 							component={RouterLink}
@@ -62,7 +69,7 @@ export default function ErrorPage() {
 					</Box>
 				</Box>
 			</Box>
-			<Footer onClick={handleModeChange} />
-		</ThemeProvider>
-	);
+            <Footer onClick={handleModeChange} />
+        </ThemeProvider>
+    );
 }

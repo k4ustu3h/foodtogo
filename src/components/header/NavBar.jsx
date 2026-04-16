@@ -117,12 +117,12 @@ export default function NavBar(props) {
 									<>
 										<Stack
 											direction="row"
-											display={
-												isSmallScreen
-													? "none"
-													: "inherit"
-											}
 											spacing={2}
+											sx={{
+												display: isSmallScreen
+													? "none"
+													: "inherit",
+											}}
 										>
 											<Button
 												component={RouterLink}
@@ -140,11 +140,11 @@ export default function NavBar(props) {
 											</Button>
 										</Stack>
 										<Box
-											display={
-												isSmallScreen
+											sx={{
+												display: isSmallScreen
 													? "inherit"
-													: "none"
-											}
+													: "none",
+											}}
 										>
 											<Tooltip title="Open settings">
 												<IconButton
@@ -186,7 +186,12 @@ export default function NavBar(props) {
 																handleCloseUserMenu
 															}
 														>
-															<Typography textAlign="center">
+															<Typography
+																sx={{
+																	textAlign:
+																		"center",
+																}}
+															>
 																{item.name}
 															</Typography>
 														</MenuItem>
@@ -237,7 +242,12 @@ export default function NavBar(props) {
 															handleCloseUserMenu
 														}
 													>
-														<Typography textAlign="center">
+														<Typography
+															sx={{
+																textAlign:
+																	"center",
+															}}
+														>
 															{setting.name}
 														</Typography>
 													</MenuItem>
@@ -247,7 +257,11 @@ export default function NavBar(props) {
 												key="LogOut"
 												onClick={handleLogout}
 											>
-												<Typography textAlign="center">
+												<Typography
+													sx={{
+														textAlign: "center",
+													}}
+												>
 													Log Out
 												</Typography>
 											</MenuItem>

@@ -45,15 +45,18 @@ export default function HeroSection(props) {
 						Hungry? You're in the right place
 					</Typography>
 					<Typography variant="h6" pb={4} maxWidth={720}>
-						Be it healthy or junk food, we offer a wide range of cuisines to
-						satisfy your taste buds.
+						Be it healthy or junk food, we offer a wide range of
+						cuisines to satisfy your taste buds.
 					</Typography>
 					<Button color="primary" href="#menu" variant="filled">
 						Take Me to the Menu
 					</Button>
 					<Box sx={{ mt: 8 }}>
 						<FormControl sx={{ width: "100%" }}>
-							<InputLabel htmlFor="search-box" sx={{ ml: 4, mt: 0.6 }}>
+							<InputLabel
+								htmlFor="search-box"
+								sx={{ ml: 4, mt: 0.6 }}
+							>
 								Search
 							</InputLabel>
 							<FilledInput
@@ -68,8 +71,14 @@ export default function HeroSection(props) {
 											visibility: props.searchVisibility,
 										}}
 									>
-										<IconButton onClick={props.searchOnClick} edge="end">
-											<Icon icon="ic:outline-close" width="24" />
+										<IconButton
+											onClick={props.searchOnClick}
+											edge="end"
+										>
+											<Icon
+												icon="ic:outline-close"
+												width="24"
+											/>
 										</IconButton>
 									</InputAdornment>
 								}

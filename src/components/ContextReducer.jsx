@@ -31,7 +31,7 @@ const reducer = (state, action) => {
 					console.log(
 						food.qty,
 						parseInt(action.qty),
-						action.price + food.price
+						action.price + food.price,
 					);
 					arr[index] = {
 						...food,

@@ -74,7 +74,9 @@ export default function FoodItems(props) {
 					size: size,
 					img: props.ImgSrc,
 				});
-				console.log("Size different so simply ADD one more to the list");
+				console.log(
+					"Size different so simply ADD one more to the list",
+				);
 			}
 		} else {
 			await dispatch({
@@ -109,7 +111,11 @@ export default function FoodItems(props) {
 					<Typography gutterBottom variant="h6">
 						{props.foodName}
 					</Typography>
-					<Typography variant="subtitle1" color="text.secondary" mt={1}>
+					<Typography
+						variant="subtitle1"
+						color="text.secondary"
+						mt={1}
+					>
 						₹{finalPrice}/-
 					</Typography>
 				</CardContent>
@@ -128,7 +134,11 @@ export default function FoodItems(props) {
 				</CardActions>
 				<Collapse in={expanded} timeout="auto" unmountOnExit>
 					<CardContent>
-						<Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+						<Typography
+							variant="body2"
+							color="text.secondary"
+							sx={{ mb: 2 }}
+						>
 							{props.description}
 						</Typography>
 						<ButtonGroup sx={{ height: 34 }}>
@@ -142,7 +152,11 @@ export default function FoodItems(props) {
 							>
 								<Icon icon="ic:outline-remove" width={18} />
 							</Button>
-							<Button value={qty} onChange={handleQty} size="small">
+							<Button
+								value={qty}
+								onChange={handleQty}
+								size="small"
+							>
 								{qty}
 							</Button>
 							<Button
@@ -156,7 +170,10 @@ export default function FoodItems(props) {
 								<Icon icon="ic:outline-add" width={18} />
 							</Button>
 						</ButtonGroup>
-						<FormControl sx={{ m: 1, minWidth: 92, top: -8 }} size="small">
+						<FormControl
+							sx={{ m: 1, minWidth: 92, top: -8 }}
+							size="small"
+						>
 							<InputLabel
 								id="size-options"
 								sx={{ fontSize: 12, color: "primary.main" }}
@@ -173,7 +190,11 @@ export default function FoodItems(props) {
 							>
 								{priceOptions.map((i) => {
 									return (
-										<MenuItem sx={{ fontSize: 12 }} key={i} value={i}>
+										<MenuItem
+											sx={{ fontSize: 12 }}
+											key={i}
+											value={i}
+										>
 											{i}
 										</MenuItem>
 									);

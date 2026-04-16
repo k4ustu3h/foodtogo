@@ -56,7 +56,10 @@ export const themeOptions = (mode) =>
 							paddingRight: 24,
 							borderRadius: 20,
 							backgroundColor: brown[500],
-							":hover": { backgroundColor: brown[700], color: "white" },
+							":hover": {
+								backgroundColor: brown[700],
+								color: "white",
+							},
 							textTransform: "none",
 						},
 					},

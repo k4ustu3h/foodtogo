@@ -12,7 +12,7 @@ export function ScrollToTop() {
 
 	const handleClick = (event) => {
 		const anchor = (event.target.ownerDocument || document).querySelector(
-			"#back-to-top-anchor"
+			"#back-to-top-anchor",
 		);
 
 		if (anchor) {

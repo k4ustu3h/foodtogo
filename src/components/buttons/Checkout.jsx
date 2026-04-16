@@ -31,7 +31,7 @@ export default function Checkout() {
 
 	async function displayRazorpay() {
 		const res = await loadScript(
-			"https://checkout.razorpay.com/v1/checkout.js"
+			"https://checkout.razorpay.com/v1/checkout.js",
 		);
 
 		let userEmail = localStorage.getItem("userEmail");
@@ -40,7 +40,9 @@ export default function Checkout() {
 			return;
 		}
 
-		const result = await axios.post("https://foodtogo.cyclic.app/api/orders");
+		const result = await axios.post(
+			"https://foodtogo.cyclic.app/api/orders",
+		);
 
 		if (!result) {
 			alert("Server error. Are you online?");
@@ -74,7 +76,7 @@ export default function Checkout() {
 							razorpayOrderId: res.razorpay_order_id,
 							razorpaySignature: res.razorpay_signature,
 						}),
-					}
+					},
 				);
 				console.log("JSON RESPONSE:::::", response.status);
 				if (response.status === 200) {
@@ -113,7 +115,10 @@ export default function Checkout() {
 					disabled={loading}
 					onClick={handleClick}
 					startIcon={
-						<Icon icon="ic:outline-shopping-cart-checkout" width={18} />
+						<Icon
+							icon="ic:outline-shopping-cart-checkout"
+							width={18}
+						/>
 					}
 					variant="filled"
 				>

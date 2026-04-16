@@ -30,19 +30,22 @@ export default function SignUp() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const response = await fetch("https://foodtogo.cyclic.app/api/createuser", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
+		const response = await fetch(
+			"https://foodtogo.cyclic.app/api/createuser",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					firstName: credentials.firstName,
+					lastName: credentials.lastName,
+					email: credentials.email,
+					password: credentials.password,
+					location: credentials.geolocation,
+				}),
 			},
-			body: JSON.stringify({
-				firstName: credentials.firstName,
-				lastName: credentials.lastName,
-				email: credentials.email,
-				password: credentials.password,
-				location: credentials.geolocation,
-			}),
-		});
+		);
 		const json = await response.json();
 		console.log(json);
 		if (json.success) {
@@ -186,7 +189,11 @@ export default function SignUp() {
 						</Box>
 						<Grid container justifyContent="flex-end">
 							<Grid item>
-								<Link component={RouterLink} to="/login" variant="body2">
+								<Link
+									component={RouterLink}
+									to="/login"
+									variant="body2"
+								>
 									Already have an account? Sign in
 								</Link>
 							</Grid>

@@ -9,7 +9,7 @@ export default function ThemeToggle({ onClick }) {
 			(window.matchMedia &&
 			window.matchMedia("(prefers-color-scheme: dark)").matches
 				? "dark"
-				: "light")
+				: "light"),
 	);
 
 	useEffect(() => {

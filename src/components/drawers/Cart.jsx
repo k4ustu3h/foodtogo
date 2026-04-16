@@ -74,9 +74,12 @@ export default function Cart() {
 							<Typography gutterBottom={true} variant="h4">
 								This cart is devoid of culinary delights.
 							</Typography>
-							<Typography color="textSecondary" variant="subtitle1">
-								We'll have to find some new tasty treats to fill up this empty
-								cart.
+							<Typography
+								color="textSecondary"
+								variant="subtitle1"
+							>
+								We'll have to find some new tasty treats to fill
+								up this empty cart.
 							</Typography>
 						</Box>
 					</Box>

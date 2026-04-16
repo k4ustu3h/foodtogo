@@ -37,7 +37,7 @@ export default function MyOrders() {
 				"https://foodtogo.cyclic.app/api/myOrderData",
 				{
 					email: localStorage.getItem("userEmail"),
-				}
+				},
 			);
 			setOrderData(response.data);
 		} catch (error) {
@@ -74,14 +74,34 @@ export default function MyOrders() {
 										let gridItems = item
 											.filter(
 												(arrayData) =>
-													!(arrayData.Order_date && arrayData.Order_time)
+													!(
+														arrayData.Order_date &&
+														arrayData.Order_time
+													),
 											)
 											.map((arrayData, i) => (
-												<Grid item xs={12} sm={6} md={4} lg={3} key={`${i}`}>
-													<Card sx={{ width: "100%", borderRadius: 4 }}>
+												<Grid
+													item
+													xs={12}
+													sm={6}
+													md={4}
+													lg={3}
+													key={`${i}`}
+												>
+													<Card
+														sx={{
+															width: "100%",
+															borderRadius: 4,
+														}}
+													>
 														<CardMedia
-															image={arrayData.img}
-															sx={{ height: 176, borderRadius: 4 }}
+															image={
+																arrayData.img
+															}
+															sx={{
+																height: 176,
+																borderRadius: 4,
+															}}
 														/>
 														<CardContent>
 															<Typography variant="subtitle2">
@@ -92,14 +112,19 @@ export default function MyOrders() {
 																mt={1}
 																variant="subtitle1"
 															>
-																₹{arrayData.price}/-
+																₹
+																{
+																	arrayData.price
+																}
+																/-
 															</Typography>
 															<Typography
 																color="text.secondary"
 																mt={1}
 																variant="subtitle1"
 															>
-																{arrayData.qty} {arrayData.size}
+																{arrayData.qty}{" "}
+																{arrayData.size}
 															</Typography>
 														</CardContent>
 													</Card>
@@ -108,7 +133,10 @@ export default function MyOrders() {
 										return (
 											<React.Fragment key={`${index}`}>
 												<Box mb={3}>
-													<Typography gutterBottom variant="h4">
+													<Typography
+														gutterBottom
+														variant="h4"
+													>
 														{item[0].Order_date}
 													</Typography>
 													<Typography variant="h6">
@@ -116,7 +144,11 @@ export default function MyOrders() {
 													</Typography>
 													<Divider sx={{ my: 2 }} />
 												</Box>
-												<Grid container spacing={2} sx={{ mb: 4 }}>
+												<Grid
+													container
+													spacing={2}
+													sx={{ mb: 4 }}
+												>
 													{gridItems}
 												</Grid>
 											</React.Fragment>
@@ -126,30 +158,60 @@ export default function MyOrders() {
 								<>
 									{!showNoOrders ? (
 										<>
-											<Typography gutterBottom variant="h4">
-												<Skeleton variant="text" width="40%" />
+											<Typography
+												gutterBottom
+												variant="h4"
+											>
+												<Skeleton
+													variant="text"
+													width="40%"
+												/>
 											</Typography>
 											<Typography variant="h6">
-												<Skeleton variant="text" width="60%" />
+												<Skeleton
+													variant="text"
+													width="60%"
+												/>
 											</Typography>
 											<Divider sx={{ my: 2 }} />
-											<Grid container spacing={2} sx={{ mb: 4 }}>
-												{Array.from(Array(8)).map((_, index) => (
-													<Grid key={index} xs={12} sm={6} md={4} lg={3}>
-														<Skeleton
-															variant="rectangular"
-															width="100%"
-															sx={{ height: 176, borderRadius: 4 }}
-														/>
-														<Skeleton
-															variant="text"
-															width="80%"
-															sx={{ mt: 1 }}
-														/>
-														<Skeleton variant="text" width="30%" />
-														<Skeleton variant="text" width="20%" />
-													</Grid>
-												))}
+											<Grid
+												container
+												spacing={2}
+												sx={{ mb: 4 }}
+											>
+												{Array.from(Array(8)).map(
+													(_, index) => (
+														<Grid
+															key={index}
+															xs={12}
+															sm={6}
+															md={4}
+															lg={3}
+														>
+															<Skeleton
+																variant="rectangular"
+																width="100%"
+																sx={{
+																	height: 176,
+																	borderRadius: 4,
+																}}
+															/>
+															<Skeleton
+																variant="text"
+																width="80%"
+																sx={{ mt: 1 }}
+															/>
+															<Skeleton
+																variant="text"
+																width="30%"
+															/>
+															<Skeleton
+																variant="text"
+																width="20%"
+															/>
+														</Grid>
+													),
+												)}
 											</Grid>
 										</>
 									) : (
@@ -164,17 +226,36 @@ export default function MyOrders() {
 												width: "100%",
 											}}
 										>
-											<Box pt={6} pb={10} textAlign="center">
-												<dotlottie-player autoplay loop src={tumbleweed} />
-												<Typography color="primary" variant="h3">
+											<Box
+												pt={6}
+												pb={10}
+												textAlign="center"
+											>
+												<dotlottie-player
+													autoplay
+													loop
+													src={tumbleweed}
+												/>
+												<Typography
+													color="primary"
+													variant="h3"
+												>
 													Zero, zip, zilch, nada.
 												</Typography>
-												<Typography gutterBottom variant="h3">
-													Still haven't decided what to order?
+												<Typography
+													gutterBottom
+													variant="h3"
+												>
+													Still haven't decided what
+													to order?
 												</Typography>
-												<Typography color="textSecondary" variant="subtitle1">
-													Go to the homepage to look at the mouth
-													watering-dishes that we have to offer
+												<Typography
+													color="textSecondary"
+													variant="subtitle1"
+												>
+													Go to the homepage to look
+													at the mouth watering-dishes
+													that we have to offer
 												</Typography>
 												<Box mt={3}>
 													<Button
@@ -191,7 +272,7 @@ export default function MyOrders() {
 									)}
 								</>
 							);
-					  })
+						})
 					: ""}
 			</Container>
 			<Footer onClick={handleModeChange} />

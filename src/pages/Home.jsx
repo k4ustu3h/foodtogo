@@ -72,7 +72,11 @@ export default function Home() {
 										width="100%"
 										sx={{ height: 176, borderRadius: 4 }}
 									/>
-									<Skeleton variant="text" width="80%" sx={{ mt: 1 }} />
+									<Skeleton
+										variant="text"
+										width="80%"
+										sx={{ mt: 1 }}
+									/>
 									<Skeleton variant="text" width="60%" />
 									<Box display="flex" mt={1}>
 										<Skeleton
@@ -81,7 +85,11 @@ export default function Home() {
 										/>
 										<Skeleton
 											variant="circular"
-											sx={{ height: 40, width: 40, ml: "auto" }}
+											sx={{
+												height: 40,
+												width: 40,
+												ml: "auto",
+											}}
 										/>
 									</Box>
 								</Grid>
@@ -101,10 +109,13 @@ export default function Home() {
 										foodItems
 											.filter(
 												(items) =>
-													items.CategoryName === data.CategoryName &&
+													items.CategoryName ===
+														data.CategoryName &&
 													items.name
 														.toLowerCase()
-														.includes(search.toLowerCase())
+														.includes(
+															search.toLowerCase(),
+														),
 											)
 											.map((filterItems) => {
 												return (
@@ -116,11 +127,20 @@ export default function Home() {
 														lg={3}
 													>
 														<FoodItems
-															foodName={filterItems.name}
-															description={filterItems.description}
+															foodName={
+																filterItems.name
+															}
+															description={
+																filterItems.description
+															}
 															item={filterItems}
-															options={filterItems.options[0]}
-															ImgSrc={filterItems.img}
+															options={
+																filterItems
+																	.options[0]
+															}
+															ImgSrc={
+																filterItems.img
+															}
 														></FoodItems>
 													</Grid>
 												);

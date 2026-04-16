@@ -44,7 +44,8 @@ export default function ErrorPage() {
 						Something went wrong!
 					</Typography>
 					<Typography color="textSecondary" variant="subtitle1">
-						Looks like you wandered off to somewhere that just doesn't exist
+						Looks like you wandered off to somewhere that just
+						doesn't exist
 					</Typography>
 					<Typography color="textSecondary" variant="caption">
 						(or it may be that this page hasn't been built yet)

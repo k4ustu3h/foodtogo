@@ -73,8 +73,17 @@ export default function NavBar(props) {
 				>
 					<Container maxWidth="xl">
 						<Toolbar disableGutters>
-							<Box sx={{ color: "primary.main", display: "flex", mr: 1 }}>
-								<Icon icon="ic:twotone-delivery-dining" width={48} />
+							<Box
+								sx={{
+									color: "primary.main",
+									display: "flex",
+									mr: 1,
+								}}
+							>
+								<Icon
+									icon="ic:twotone-delivery-dining"
+									width={48}
+								/>
 							</Box>
 							<Typography
 								component={RouterLink}
@@ -99,12 +108,20 @@ export default function NavBar(props) {
 								}}
 							>
 								<Cart />
-								<Divider orientation="vertical" variant="middle" flexItem />
+								<Divider
+									orientation="vertical"
+									variant="middle"
+									flexItem
+								/>
 								{!localStorage.getItem("token") ? (
 									<>
 										<Stack
 											direction="row"
-											display={isSmallScreen ? "none" : "inherit"}
+											display={
+												isSmallScreen
+													? "none"
+													: "inherit"
+											}
 											spacing={2}
 										>
 											<Button
@@ -122,17 +139,32 @@ export default function NavBar(props) {
 												Login
 											</Button>
 										</Stack>
-										<Box display={isSmallScreen ? "inherit" : "none"}>
+										<Box
+											display={
+												isSmallScreen
+													? "inherit"
+													: "none"
+											}
+										>
 											<Tooltip title="Open settings">
-												<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+												<IconButton
+													onClick={handleOpenUserMenu}
+													sx={{ p: 0 }}
+												>
 													<Avatar>
-														<Icon icon="ic:round-person-outline" width={24} />
+														<Icon
+															icon="ic:round-person-outline"
+															width={24}
+														/>
 													</Avatar>
 												</IconButton>
 											</Tooltip>
 											<Menu
 												anchorEl={anchorElUser}
-												anchorOrigin={{ vertical: "top", horizontal: "right" }}
+												anchorOrigin={{
+													vertical: "top",
+													horizontal: "right",
+												}}
 												id="menu-appbar"
 												keepMounted
 												onClose={handleCloseUserMenu}
@@ -149,7 +181,11 @@ export default function NavBar(props) {
 														key={item.name}
 														to={item.link}
 													>
-														<MenuItem onClick={handleCloseUserMenu}>
+														<MenuItem
+															onClick={
+																handleCloseUserMenu
+															}
+														>
 															<Typography textAlign="center">
 																{item.name}
 															</Typography>
@@ -162,15 +198,24 @@ export default function NavBar(props) {
 								) : (
 									<>
 										<Tooltip title="Open settings">
-											<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+											<IconButton
+												onClick={handleOpenUserMenu}
+												sx={{ p: 0 }}
+											>
 												<Avatar>
-													<Icon icon="ic:round-person-outline" width={24} />
+													<Icon
+														icon="ic:round-person-outline"
+														width={24}
+													/>
 												</Avatar>
 											</IconButton>
 										</Tooltip>
 										<Menu
 											anchorEl={anchorElUser}
-											anchorOrigin={{ vertical: "top", horizontal: "right" }}
+											anchorOrigin={{
+												vertical: "top",
+												horizontal: "right",
+											}}
 											id="menu-appbar"
 											keepMounted
 											onClose={handleCloseUserMenu}
@@ -187,15 +232,24 @@ export default function NavBar(props) {
 													key={setting.name}
 													to={setting.link}
 												>
-													<MenuItem onClick={handleCloseUserMenu}>
+													<MenuItem
+														onClick={
+															handleCloseUserMenu
+														}
+													>
 														<Typography textAlign="center">
 															{setting.name}
 														</Typography>
 													</MenuItem>
 												</Box>
 											))}
-											<MenuItem key="LogOut" onClick={handleLogout}>
-												<Typography textAlign="center">Log Out</Typography>
+											<MenuItem
+												key="LogOut"
+												onClick={handleLogout}
+											>
+												<Typography textAlign="center">
+													Log Out
+												</Typography>
 											</MenuItem>
 										</Menu>
 									</>

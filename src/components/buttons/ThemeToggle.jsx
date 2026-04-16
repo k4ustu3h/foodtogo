@@ -1,22 +1,30 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import { Icon } from "@iconify/react";
 
 export default function ThemeToggle({ onClick }) {
-	const [themeMode, setThemeMode] = useState(
-		localStorage.getItem("themeMode") ||
-			(window.matchMedia &&
-			window.matchMedia("(prefers-color-scheme: dark)").matches
-				? "dark"
-				: "light"),
-	);
+	const [themeMode, setThemeMode] = useState("dark");
+	const [mounted, setMounted] = useState(false);
 
 	useEffect(() => {
+		setMounted(true);
+
 		const savedPreference = localStorage.getItem("themeMode");
 		if (savedPreference) {
 			setThemeMode(savedPreference);
 			onClick(savedPreference);
+		} else if (
+			window.matchMedia &&
+			window.matchMedia("(prefers-color-scheme: dark)").matches
+		) {
+			setThemeMode("dark");
+			onClick("dark");
+		} else {
+			setThemeMode("light");
+			onClick("light");
 		}
 	}, [onClick]);
 
@@ -27,14 +35,12 @@ export default function ThemeToggle({ onClick }) {
 		localStorage.setItem("themeMode", newPreference);
 	};
 
-	if (
-		typeof window !== "undefined" &&
-		!window.matchMedia("(prefers-color-scheme: dark)").matches &&
-		themeMode !== "dark" &&
-		themeMode !== "light"
-	) {
-		setThemeMode("dark");
-		onClick("dark");
+	if (!mounted) {
+		return (
+			<IconButton disabled sx={{ visibility: "hidden" }}>
+				<Icon icon="ic:outline-dark-mode" />
+			</IconButton>
+		);
 	}
 
 	return (

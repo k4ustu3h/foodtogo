@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -9,17 +11,19 @@ import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as NextLink } from "next/link";
+import { useRouter } from "next/navigation";
 import { ThemeProvider } from "@mui/material/styles";
-import Footer from "../components/footer/Footer";
-import NavBar from "../components/header/NavBar";
-import { themeOptions } from "../styles/themeOptions";
+import Footer from "../footer/Footer";
+import NavBar from "../header/NavBar";
+import { themeOptions } from "../../styles/themeOptions";
 import { LinearProgress } from "@mui/material";
 
 export default function Login() {
 	const [loading, setLoading] = useState(false);
 	const [credentials, setCredentials] = useState({ email: "", password: "" });
-	let navigate = useNavigate();
+
+	let router = useRouter();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -38,9 +42,10 @@ export default function Login() {
 		if (json.success) {
 			localStorage.setItem("userEmail", credentials.email);
 			localStorage.setItem("token", json.authToken);
-			navigate("/");
+			router.push("/");
 		} else {
 			alert("Enter Valid Credentials");
+			setLoading(false);
 		}
 	};
 
@@ -48,10 +53,14 @@ export default function Login() {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
 
-	const [mode, setMode] = useState(() => {
+	const [mode, setMode] = useState("dark");
+
+	useEffect(() => {
 		const storedMode = localStorage.getItem("themeMode");
-		return storedMode !== null ? storedMode : "dark";
-	});
+		if (storedMode) {
+			setMode(storedMode);
+		}
+	}, []);
 
 	const handleModeChange = (newMode) => {
 		setMode(newMode);
@@ -138,8 +147,8 @@ export default function Login() {
 						<Grid container>
 							<Grid size="grow">
 								<Link
-									component={RouterLink}
-									to="/"
+									component={NextLink}
+									href="/"
 									variant="body2"
 								>
 									Forgot password?
@@ -147,8 +156,8 @@ export default function Login() {
 							</Grid>
 							<Grid>
 								<Link
-									component={RouterLink}
-									to="/signup"
+									component={NextLink}
+									href="/signup"
 									variant="body2"
 								>
 									{"Don't have an account? Sign Up"}

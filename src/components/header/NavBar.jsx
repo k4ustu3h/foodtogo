@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -15,7 +17,8 @@ import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Icon } from "@iconify/react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Cart from "../drawers/Cart";
 import { ScrollToTop } from "../buttons/ScrollToTop";
 
@@ -32,9 +35,18 @@ function ElevationScroll(props) {
 }
 
 export default function NavBar(props) {
-	const [anchorElUser, setAnchorElUser] = React.useState(null);
+	const [anchorElUser, setAnchorElUser] = useState(null);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	const isSmallScreen = useMediaQuery("(max-width: 450px)");
+	let router = useRouter();
+
+	useEffect(() => {
+		localStorage.setItem("temp", "first");
+		if (localStorage.getItem("token")) {
+			setIsLoggedIn(true);
+		}
+	}, []);
 
 	const handleOpenUserMenu = (event) => {
 		setAnchorElUser(event.currentTarget);
@@ -42,6 +54,12 @@ export default function NavBar(props) {
 
 	const handleCloseUserMenu = () => {
 		setAnchorElUser(null);
+	};
+
+	const handleLogout = () => {
+		localStorage.removeItem("token");
+		setIsLoggedIn(false);
+		router.push("/login");
 	};
 
 	const settings = [
@@ -53,15 +71,6 @@ export default function NavBar(props) {
 		{ link: "/signup", name: "Sign Up" },
 		{ link: "/login", name: "Login" },
 	];
-
-	localStorage.setItem("temp", "first");
-	let navigate = useNavigate();
-
-	const handleLogout = () => {
-		localStorage.removeItem("token");
-
-		navigate("/login");
-	};
 
 	return (
 		<React.Fragment>
@@ -86,15 +95,17 @@ export default function NavBar(props) {
 								/>
 							</Box>
 							<Typography
-								component={RouterLink}
+								component={Link}
+								href="/"
 								noWrap
 								sx={{
 									display: "flex",
 									flexGrow: { xs: 1, md: 0 },
 									fontFamily: "Lobster",
 									mr: 2,
+									textDecoration: "none",
+									color: "inherit",
 								}}
-								to="/"
 								variant="h4"
 							>
 								Food To Go
@@ -113,7 +124,7 @@ export default function NavBar(props) {
 									variant="middle"
 									flexItem
 								/>
-								{!localStorage.getItem("token") ? (
+								{!isLoggedIn ? (
 									<>
 										<Stack
 											direction="row"
@@ -125,15 +136,15 @@ export default function NavBar(props) {
 											}}
 										>
 											<Button
-												component={RouterLink}
+												component={Link}
+												href="/signup"
 												sx={{ color: "text.primary" }}
-												to="/signup"
 											>
 												Sign Up
 											</Button>
 											<Button
-												component={RouterLink}
-												to="/login"
+												component={Link}
+												href="/login"
 												variant="filled"
 											>
 												Login
@@ -177,9 +188,14 @@ export default function NavBar(props) {
 											>
 												{userMenu.map((item) => (
 													<Box
-														component={RouterLink}
+														component={Link}
 														key={item.name}
-														to={item.link}
+														href={item.link}
+														sx={{
+															textDecoration:
+																"none",
+															color: "inherit",
+														}}
 													>
 														<MenuItem
 															onClick={
@@ -233,9 +249,13 @@ export default function NavBar(props) {
 										>
 											{settings.map((setting) => (
 												<Box
-													component={RouterLink}
+													component={Link}
 													key={setting.name}
-													to={setting.link}
+													href={setting.link}
+													sx={{
+														textDecoration: "none",
+														color: "inherit",
+													}}
 												>
 													<MenuItem
 														onClick={

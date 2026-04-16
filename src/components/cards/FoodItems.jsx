@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from "react";
 import { useDispatchCart, useCart } from "../ContextReducer";
 import Button from "@mui/material/Button";
@@ -15,7 +17,7 @@ import Select from "@mui/material/Select";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
-import { styled } from "@mui/material/";
+import { styled } from "@mui/material/styles";
 
 const ExpandMore = styled((props) => {
 	const { expand, ...other } = props;

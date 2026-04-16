@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useReducer, useContext, createContext } from "react";
 
 const CartStateContext = createContext();

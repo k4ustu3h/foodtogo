@@ -1,22 +1,25 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
-import Grid from "@mui/material/Unstable_Grid2";
+import Grid from "@mui/material/Grid";
 import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider } from "@mui/material";
-import FoodItems from "../components/cards/FoodItems";
-import Footer from "../components/footer/Footer";
-import HeroSection from "../components/sections/HeroSection";
-import Navbar from "../components/header/NavBar";
-import { themeOptions } from "../styles/themeOptions";
+import FoodItems from "../cards/FoodItems";
+import Footer from "../footer/Footer";
+import HeroSection from "../sections/HeroSection";
+import Navbar from "../header/NavBar";
+import { themeOptions } from "../../styles/themeOptions";
 
 export default function Home() {
 	const [foodCat, setFoodCat] = useState([]);
 	const [foodItems, setFoodItems] = useState([]);
 	const [search, setSearch] = useState("");
+
 	const loadFoodItems = async () => {
 		let response = await fetch("https://foodtogo.cyclic.app/api/foodData", {
 			method: "POST",
@@ -33,10 +36,14 @@ export default function Home() {
 		loadFoodItems();
 	}, []);
 
-	const [mode, setMode] = useState(() => {
+	const [mode, setMode] = useState("dark");
+
+	useEffect(() => {
 		const storedMode = localStorage.getItem("themeMode");
-		return storedMode !== null ? storedMode : "dark";
-	});
+		if (storedMode) {
+			setMode(storedMode);
+		}
+	}, []);
 
 	const handleModeChange = (newMode) => {
 		setMode(newMode);
@@ -59,18 +66,17 @@ export default function Home() {
 			/>
 			<Container id="menu">
 				{foodCat.length === 0 ? (
-					<Box
-						sx={{
-							mb: 3,
-						}}
-					>
+					<Box sx={{ mb: 3 }}>
 						<Typography gutterBottom variant="h4">
 							<Skeleton variant="text" width="50%" />
 						</Typography>
 						<Divider sx={{ my: 2 }} />
 						<Grid container spacing={4}>
 							{Array.from(Array(8)).map((_, index) => (
-								<Grid key={index} xs={12} sm={6} md={4} lg={3}>
+								<Grid
+									key={index}
+									size={{ xs: 12, sm: 6, md: 4, lg: 3 }}
+								>
 									<Skeleton
 										variant="rectangular"
 										width="100%"
@@ -108,12 +114,7 @@ export default function Home() {
 				) : (
 					foodCat.map((data) => {
 						return (
-							<Box
-								key={data._id}
-								sx={{
-									mb: 3,
-								}}
-							>
+							<Box key={data._id} sx={{ mb: 3 }}>
 								<Typography gutterBottom variant="h4">
 									{data.CategoryName}
 								</Typography>
@@ -135,10 +136,12 @@ export default function Home() {
 												return (
 													<Grid
 														key={filterItems._id}
-														xs={12}
-														sm={6}
-														md={4}
-														lg={3}
+														size={{
+															xs: 12,
+															sm: 6,
+															md: 4,
+															lg: 3,
+														}}
 													>
 														<FoodItems
 															foodName={
@@ -155,7 +158,7 @@ export default function Home() {
 															ImgSrc={
 																filterItems.img
 															}
-														></FoodItems>
+														/>
 													</Grid>
 												);
 											})}

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -6,13 +8,13 @@ import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
-import { Link as RouterLink } from "react-router-dom";
+import NextLink from "next/link";
 import ThemeToggle from "../buttons/ThemeToggle";
 
 export default function Footer(props) {
 	const links = [
-		{ name: "About Us", link: "about" },
-		{ name: "Contact Us", link: "contact" },
+		{ name: "About Us", link: "/about" },
+		{ name: "Contact Us", link: "/contact" },
 	];
 
 	return (
@@ -28,13 +30,13 @@ export default function Footer(props) {
 				}}
 			>
 				<Link
-					component={RouterLink}
+					component={NextLink}
 					sx={{
 						":hover": {
 							color: "primary.main",
 						},
 					}}
-					to="/"
+					href="/"
 				>
 					<Icon icon="ic:twotone-delivery-dining" width="64" />
 				</Link>
@@ -52,10 +54,10 @@ export default function Footer(props) {
 						return (
 							<Typography
 								color="textPrimary"
-								component={RouterLink}
+								component={NextLink}
 								key={link.name}
 								sx={{ ml: 3, mr: 3 }}
-								to={link.link}
+								href={link.link}
 								variant="body1"
 							>
 								{link.name}
@@ -65,16 +67,32 @@ export default function Footer(props) {
 				</Box>
 				<Stack direction="row" spacing={2}>
 					<ThemeToggle onClick={props.onClick} />
-					<IconButton href="https://facebook.com/">
+					<IconButton
+						href="https://facebook.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<Icon icon="simple-icons:facebook" width="24" />
 					</IconButton>
-					<IconButton href="https://github.com/k4ustu3h/foodtogo">
+					<IconButton
+						href="https://github.com/k4ustu3h/foodtogo"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<Icon icon="simple-icons:github" width="24" />
 					</IconButton>
-					<IconButton href="https://instagram.com/">
+					<IconButton
+						href="https://instagram.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<Icon icon="simple-icons:instagram" width="24" />
 					</IconButton>
-					<IconButton href="https://twitter.com/">
+					<IconButton
+						href="https://twitter.com/"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
 						<Icon icon="simple-icons:twitter" width="24" />
 					</IconButton>
 				</Stack>

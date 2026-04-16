@@ -1,16 +1,18 @@
+"use client";
+
 import React, { useState } from "react";
 import axios from "axios";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import LinearProgress from "@mui/material/LinearProgress";
 import { Icon } from "@iconify/react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import { brown } from "../../styles/palette";
 import { useCart, useDispatchCart } from "../ContextReducer";
 
 export default function Checkout() {
 	const [loading, setLoading] = useState(false);
-	let navigate = useNavigate();
+	let router = useRouter();
 
 	function loadScript(src) {
 		return new Promise((resolve) => {
@@ -52,7 +54,7 @@ export default function Checkout() {
 		const { id: order_id, currency } = result.data;
 
 		const options = {
-			key: process.env.RAZORPAY_KEY_ID,
+			key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
 			amount: "50000",
 			currency: currency,
 			name: "Food To Go",
@@ -101,7 +103,7 @@ export default function Checkout() {
 
 	const handleClick = () => {
 		if (!localStorage.getItem("token")) {
-			navigate("/login");
+			router.push("/login");
 		} else if (localStorage.getItem("token") && !loading) {
 			displayRazorpay();
 			setLoading(true);

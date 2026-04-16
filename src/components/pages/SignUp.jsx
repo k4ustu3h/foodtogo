@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -10,11 +12,12 @@ import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { Link as NextLink } from "next/link";
+import { useRouter } from "next/navigation";
 import { ThemeProvider } from "@mui/material/styles";
-import Footer from "../components/footer/Footer";
-import NavBar from "../components/header/NavBar";
-import { themeOptions } from "../styles/themeOptions";
+import Footer from "../../components/footer/Footer";
+import NavBar from "../../components/header/NavBar";
+import { themeOptions } from "../../styles/themeOptions";
 
 export default function SignUp() {
 	const [loading, setLoading] = useState(false);
@@ -26,7 +29,7 @@ export default function SignUp() {
 		geolocation: "",
 	});
 
-	let navigate = useNavigate();
+	let router = useRouter();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -50,7 +53,7 @@ export default function SignUp() {
 		console.log(json);
 		if (json.success) {
 			localStorage.setItem("token", json.authToken);
-			navigate("/login");
+			router.push("/login");
 		} else {
 			alert("Enter Valid Credentials");
 		}
@@ -60,10 +63,14 @@ export default function SignUp() {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
 
-	const [mode, setMode] = useState(() => {
+	const [mode, setMode] = useState("dark");
+
+	useEffect(() => {
 		const storedMode = localStorage.getItem("themeMode");
-		return storedMode !== null ? storedMode : "dark";
-	});
+		if (storedMode) {
+			setMode(storedMode);
+		}
+	}, []);
 
 	const handleModeChange = (newMode) => {
 		setMode(newMode);
@@ -205,8 +212,8 @@ export default function SignUp() {
 						>
 							<Grid>
 								<Link
-									component={RouterLink}
-									to="/login"
+									component={NextLink}
+									href="/login"
 									variant="body2"
 								>
 									Already have an account? Sign in

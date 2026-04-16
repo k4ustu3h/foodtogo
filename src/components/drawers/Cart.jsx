@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import "@dotlottie/player-component";
+import React, { useEffect, useState } from "react";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -10,10 +9,13 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
 import Checkout from "../buttons/Checkout";
-import emptyCart from "../../assets/animations/empty_cart.lottie";
 import { useCart, useDispatchCart } from "../ContextReducer";
 
 export default function Cart() {
+	useEffect(() => {
+		import("@dotlottie/player-component");
+	}, []);
+
 	const [state, setState] = useState({
 		right: false,
 	});
@@ -69,9 +71,9 @@ export default function Cart() {
 							}}
 						>
 							<dotlottie-player
-								autoplay
-								loop
-								src={emptyCart}
+								autoplay={true}
+								loop={true}
+								src="/animations/empty_cart.lottie"
 								style={{ height: 400 }}
 							/>
 							<Typography color="primary" variant="h4">

@@ -1,109 +1,150 @@
-import React from "react";
-import "@dotlottie/player-component";
+"use client";
+
+import { useEffect } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import FilledInput from "@mui/material/FilledInput";
 import FormControl from "@mui/material/FormControl";
-import Grid from "@mui/material/Unstable_Grid2";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { Icon } from "@iconify/react";
-import healthyOrJunk from "../../assets/animations/healthy_or_junk.lottie";
 
 export default function HeroSection(props) {
+	const theme = useTheme();
+	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+	useEffect(() => {
+		import("@dotlottie/player-component");
+	}, []);
+
 	return (
-		<Box
+		<Stack
+			direction={isMobile ? "column-reverse" : "row"}
+			spacing={isMobile ? 6 : 4}
 			sx={{
 				alignItems: "center",
-				display: "flex",
 				justifyContent: "center",
 				minHeight: "100vh",
-				padding: { xs: 2, md: 24 },
-				width: "100%",
+				px: isMobile ? 2 : 24,
+				py: isMobile ? 8 : 12,
+				maxWidth: 1920,
+				mx: "auto",
 			}}
 		>
-			<Grid
-				container
-				spacing={6}
+			<Box
 				sx={{
-					alignItems: { xs: "flex-start", md: "center" },
 					display: "flex",
-					flexDirection: { xs: "column-reverse", md: "row" },
-					maxWidth: { xs: "100%", md: 1280 },
+					flexDirection: "column",
+					justifyContent: "center",
+					width: isMobile ? "100%" : "50%",
 				}}
 			>
-				<Grid xs={12} md={6} sx={{ pb: { xs: 2, md: 42 } }}>
-					<Typography
-						variant="h3"
-						sx={{
-							color: "primary.main",
-							fontWeight: 700,
-							maxWidth: 512,
-							pb: 6,
-						}}
+				<Typography
+					component="h3"
+					variant="h3"
+					sx={{
+						color: "primary.main",
+						fontWeight: 700,
+						maxWidth: 512,
+						pb: 6,
+					}}
+				>
+					Hungry? You're in the right place
+				</Typography>
+				<Typography
+					variant="h6"
+					sx={{
+						pb: 4,
+						maxWidth: 720,
+					}}
+				>
+					Be it healthy or junk food, we offer a wide range of
+					cuisines to satisfy your taste buds.
+				</Typography>
+				<Box>
+					<Button
+						color="primary"
+						href="#menu"
+						variant="filled"
+						sx={{ mt: 3, mb: 3, fontWeight: "light" }}
 					>
-						Hungry? You're in the right place
-					</Typography>
-					<Typography
-						variant="h6"
-						sx={{
-							pb: 4,
-							maxWidth: 720,
-						}}
-					>
-						Be it healthy or junk food, we offer a wide range of
-						cuisines to satisfy your taste buds.
-					</Typography>
-					<Button color="primary" href="#menu" variant="filled">
 						Take Me to the Menu
 					</Button>
-					<Box sx={{ mt: 8 }}>
-						<FormControl sx={{ width: "100%" }}>
-							<InputLabel
-								htmlFor="search-box"
-								sx={{ ml: 4, mt: 0.6 }}
-							>
-								Search
-							</InputLabel>
-							<FilledInput
-								aria-label="Search"
-								disableUnderline
-								endAdornment={
-									<InputAdornment
-										position="end"
-										sx={{
-											mr: 1,
-											mt: 1,
-											visibility: props.searchVisibility,
-										}}
+				</Box>
+				<Box
+					p={2}
+					sx={{
+						mt: 3,
+						bgcolor: "action.disabledBackground",
+						borderRadius: 8,
+					}}
+				>
+					<FormControl sx={{ width: "100%" }}>
+						<InputLabel
+							htmlFor="search-box"
+							sx={{ ml: 4, mt: 0.6 }}
+						>
+							Search
+						</InputLabel>
+						<FilledInput
+							aria-label="Search"
+							disableUnderline
+							endAdornment={
+								<InputAdornment
+									position="end"
+									sx={{
+										mr: 1,
+										mt: 1,
+										visibility: props.searchVisibility,
+									}}
+								>
+									<IconButton
+										onClick={props.searchOnClick}
+										edge="end"
 									>
-										<IconButton
-											onClick={props.searchOnClick}
-											edge="end"
-										>
-											<Icon
-												icon="ic:outline-close"
-												width="24"
-											/>
-										</IconButton>
-									</InputAdornment>
-								}
-								id="search-box"
-								label="Search"
-								onChange={props.searchOnChange}
-								sx={{ pl: 2, pb: 1, borderRadius: 8 }}
-								type="search"
-								value={props.searchValue}
-							/>
-						</FormControl>
-					</Box>
-				</Grid>
-				<Grid xs={12} md={6} sx={{ mt: { xs: 8, md: 20 } }}>
-					<dotlottie-player autoplay loop src={healthyOrJunk} />
-				</Grid>
-			</Grid>
-		</Box>
+										<Icon
+											icon="ic:outline-close"
+											width="24"
+										/>
+									</IconButton>
+								</InputAdornment>
+							}
+							id="search-box"
+							label="Search"
+							onChange={props.searchOnChange}
+							sx={{
+								pl: 2,
+								pb: 1,
+								borderRadius: 8,
+								color: "text.primary",
+								fontSize: 14,
+							}}
+							type="search"
+							value={props.searchValue}
+						/>
+					</FormControl>
+				</Box>
+			</Box>
+
+			<Box
+				sx={{
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+					width: isMobile ? "100%" : "50%",
+				}}
+			>
+				<dotlottie-player
+					autoplay={true}
+					loop={true}
+					src="/animations/healthy_or_junk.lottie"
+				/>
+			</Box>
+		</Stack>
 	);
 }

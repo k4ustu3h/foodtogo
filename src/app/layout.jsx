@@ -1,6 +1,7 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { CartProvider } from "@/components/ContextReducer";
+
+import CartProvider from "@/components/ContextReducer";
 import ClarityInit from "@/components/analytics/ClarityInit";
 import "@/styles/index.css";
 
@@ -25,7 +26,7 @@ export default function RootLayout({ children }) {
 					crossOrigin="anonymous"
 				/>
 				<link
-					href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Lobster&family=Plus+Jakarta+Sans&display=swap"
+					href="https://fonts.googleapis.com/css2?family=Lobster&family=Plus+Jakarta+Sans&display=swap"
 					rel="stylesheet"
 				/>
 			</head>

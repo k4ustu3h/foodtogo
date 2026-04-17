@@ -1,23 +1,24 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
+import { Link as NextLink } from "next/link";
+import { ThemeProvider } from "@mui/material/styles";
+import { useRouter } from "next/navigation";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
+import LinearProgress from "@mui/material/LinearProgress";
 import Link from "@mui/material/Link";
+import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { Icon } from "@iconify/react";
-import { Link as NextLink } from "next/link";
-import { useRouter } from "next/navigation";
-import { ThemeProvider } from "@mui/material/styles";
+
+import { themeOptions } from "@/styles/themeOptions";
 import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/header/NavBar";
-import { themeOptions } from "@/components/styles/themeOptions";
-import { LinearProgress } from "@mui/material";
 
 export default function Login() {
 	const [loading, setLoading] = useState(false);

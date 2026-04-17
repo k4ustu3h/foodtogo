@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { ThemeProvider } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -8,12 +9,12 @@ import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
-import { ThemeProvider } from "@mui/material";
+
+import { themeOptions } from "@/styles/themeOptions";
 import FoodItems from "@/components/cards/FoodItems";
 import Footer from "@/components/footer/Footer";
 import HeroSection from "@/components/sections/HeroSection";
 import Navbar from "@/components/header/NavBar";
-import { themeOptions } from "@/styles/themeOptions";
 
 export default function Home() {
 	const [foodCat, setFoodCat] = useState([]);

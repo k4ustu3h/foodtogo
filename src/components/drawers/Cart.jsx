@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
+import { useEffect, useState } from "react";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -7,9 +8,9 @@ import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Icon } from "@iconify/react";
-import Checkout from "@/components/buttons/Checkout";
+
 import { useCart, useDispatchCart } from "@/components/ContextReducer";
+import Checkout from "@/components/buttons/Checkout";
 
 export default function Cart() {
 	useEffect(() => {
@@ -41,7 +42,7 @@ export default function Cart() {
 	let totalPrice = data.reduce((total, food) => total + food.price, 0);
 
 	return (
-		<React.Fragment key="anchor">
+		<>
 			<IconButton aria-label="Cart" onClick={toggleDrawer("right", true)}>
 				<Badge badgeContent={data.length} color="primary">
 					<Icon icon="ic:outline-shopping-cart" width={24} />
@@ -107,11 +108,14 @@ export default function Cart() {
 							onKeyDown={toggleDrawer("right", false)}
 						>
 							{data.map((food, index) => (
-								<>
-									<Typography variant="h5" sx={{ p: 3 }}>
+								<Box key={index} sx={{ mb: 2 }}>
+									<Typography
+										variant="h5"
+										sx={{ px: 3, pt: 2 }}
+									>
 										{food.name}
 									</Typography>
-									<Container sx={{ display: "flex" }}>
+									<Container sx={{ display: "flex", py: 1 }}>
 										<Typography
 											variant="subtitle1"
 											sx={{
@@ -139,14 +143,18 @@ export default function Cart() {
 										>
 											Quantity: {food.qty}
 										</Typography>
-										<Box sx={{ mt: -1, flex: 1 }}>
-											<IconButton onClick={handleRemove}>
+										<Box sx={{ mt: -1, flex: 0.5 }}>
+											<IconButton
+												onClick={() =>
+													handleRemove(index)
+												}
+											>
 												<Icon icon="ic:outline-delete" />
 											</IconButton>
 										</Box>
 									</Container>
-									<Divider sx={{ my: 1 }} variant="middle" />
-								</>
+									<Divider sx={{ mx: 3 }} />
+								</Box>
 							))}
 							<Typography
 								variant="h6"
@@ -167,6 +175,6 @@ export default function Cart() {
 					</>
 				)}
 			</Drawer>
-		</React.Fragment>
+		</>
 	);
 }

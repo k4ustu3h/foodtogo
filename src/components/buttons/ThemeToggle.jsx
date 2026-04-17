@@ -1,9 +1,9 @@
 "use client";
 
+import { Icon } from "@iconify/react";
 import { useEffect, useState } from "react";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import { Icon } from "@iconify/react";
 
 export default function ThemeToggle({ onClick }) {
 	const [themeMode, setThemeMode] = useState("dark");

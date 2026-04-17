@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { ThemeProvider } from "@mui/material";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -11,10 +12,10 @@ import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
+import NextLink from "next/link";
 import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
-import NextLink from "next/link";
-import { ThemeProvider } from "@mui/material";
+
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/header/NavBar";
 import { themeOptions } from "@/styles/themeOptions";

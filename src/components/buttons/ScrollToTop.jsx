@@ -1,11 +1,10 @@
-import * as React from "react";
-import useScrollTrigger from "@mui/material/useScrollTrigger";
+import { Icon } from "@iconify/react";
 import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
 import Slide from "@mui/material/Slide";
-import { Icon } from "@iconify/react";
+import useScrollTrigger from "@mui/material/useScrollTrigger";
 
-export function ScrollToTop() {
+export default function ScrollToTop() {
 	const trigger = useScrollTrigger({
 		threshold: 100,
 	});

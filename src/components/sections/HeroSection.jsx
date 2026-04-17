@@ -1,6 +1,8 @@
 "use client";
 
+import { Icon } from "@iconify/react";
 import { useEffect } from "react";
+import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import FilledInput from "@mui/material/FilledInput";
@@ -10,9 +12,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import InputLabel from "@mui/material/InputLabel";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { Icon } from "@iconify/react";
 
 export default function HeroSection(props) {
 	const theme = useTheme();

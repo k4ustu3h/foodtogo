@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { cloneElement, useState, useEffect } from "react";
+import { Icon } from "@iconify/react";
+import { useRouter } from "next/navigation";
 import AppBar from "@mui/material/AppBar";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -8,6 +10,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
+import Link from "next/link";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Stack from "@mui/material/Stack";
@@ -16,11 +19,9 @@ import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import useScrollTrigger from "@mui/material/useScrollTrigger";
-import { Icon } from "@iconify/react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+
 import Cart from "@/components/drawers/Cart";
-import { ScrollToTop } from "@/components/buttons/ScrollToTop";
+import ScrollToTop from "@/components/buttons/ScrollToTop";
 
 function ElevationScroll(props) {
 	const { children } = props;
@@ -29,7 +30,7 @@ function ElevationScroll(props) {
 		threshold: 0,
 	});
 
-	return React.cloneElement(children, {
+	return cloneElement(children, {
 		elevation: trigger ? 4 : 0,
 	});
 }
@@ -73,7 +74,7 @@ export default function NavBar(props) {
 	];
 
 	return (
-		<React.Fragment>
+		<>
 			<ElevationScroll {...props}>
 				<AppBar
 					color="transparent"
@@ -295,6 +296,6 @@ export default function NavBar(props) {
 			</ElevationScroll>
 			<Toolbar id="back-to-top-anchor" />
 			<ScrollToTop />
-		</React.Fragment>
+		</>
 	);
 }

@@ -1,14 +1,14 @@
 "use client";
 
-import React from "react";
+import { Icon } from "@iconify/react";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
+import NextLink from "next/link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Icon } from "@iconify/react";
-import NextLink from "next/link";
+
 import ThemeToggle from "@/components/buttons/ThemeToggle";
 
 export default function Footer(props) {

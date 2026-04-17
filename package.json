@@ -1,14 +1,17 @@
 {
 	"name": "foodtogo",
-	"version": "0.0.1",
+	"author": "Jeenal Vora, Kaustubh Ladiya",
+	"description": "Not just another food delivery website",
+	"main": "index.js",
+	"license": "GPL-3.0-or-later",
 	"private": true,
+	"version": "0.0.1",
 	"type": "module",
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start"
 	},
-	"author": "Jeenal Vora, Kaustubh Ladiya",
 	"dependencies": {
 		"@dotlottie/player-component": "2.7.12",
 		"@emotion/react": "11.14.0",
@@ -26,8 +29,5 @@
 	"devDependencies": {
 		"@iconify/react": "6.0.2",
 		"eslint": "10.2.0"
-	},
-	"description": "Not just another food delivery website",
-	"main": "index.js",
-	"license": "GPL-3.0-or-later"
+	}
 }

@@ -12,10 +12,6 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-code {
-	font-family: "JetBrains Mono", monospace;
-}
-
 a,
 a:hover {
 	color: inherit;

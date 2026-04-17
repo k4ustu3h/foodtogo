@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import { useDispatchCart, useCart } from "@/components/ContextReducer";
+import { Icon } from "@iconify/react";
+import { styled } from "@mui/material/styles";
+import { useState, useRef, useEffect } from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Card from "@mui/material/Card";
@@ -16,8 +17,8 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
-import { Icon } from "@iconify/react";
-import { styled } from "@mui/material/styles";
+
+import { useDispatchCart, useCart } from "@/components/ContextReducer";
 
 const ExpandMore = styled((props) => {
 	const { expand, ...other } = props;
@@ -47,7 +48,7 @@ export default function FoodItems(props) {
 
 	const [qty, setQty] = useState(1);
 	const [size, setSize] = useState("");
-	const [expanded, setExpanded] = React.useState(false);
+	const [expanded, setExpanded] = useState(false);
 	const priceRef = useRef();
 
 	let options = props.options;
@@ -110,7 +111,7 @@ export default function FoodItems(props) {
 
 	let finalPrice = qty * parseInt(options[size]);
 	return (
-		<React.Fragment>
+		<>
 			<Card sx={{ width: "100%", borderRadius: 4 }}>
 				<CardMedia
 					sx={{ height: 176, borderRadius: 4 }}
@@ -228,6 +229,6 @@ export default function FoodItems(props) {
 					);
 				})}
 			</select>
-		</React.Fragment>
+		</>
 	);
 }

@@ -1,6 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { Icon } from "@iconify/react";
+import { Link as NextLink } from "next/link";
+import { ThemeProvider } from "@mui/material/styles";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -11,17 +15,14 @@ import LinearProgress from "@mui/material/LinearProgress";
 import Link from "@mui/material/Link";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { Icon } from "@iconify/react";
-import { Link as NextLink } from "next/link";
-import { useRouter } from "next/navigation";
-import { ThemeProvider } from "@mui/material/styles";
+
+import { themeOptions } from "@/styles/themeOptions";
 import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/header/NavBar";
-import { themeOptions } from "@/styles/themeOptions";
 
 export default function SignUp() {
 	const [loading, setLoading] = useState(false);
-	const [credentials, setCredentials] = React.useState({
+	const [credentials, setCredentials] = useState({
 		firstName: "",
 		lastName: "",
 		email: "",

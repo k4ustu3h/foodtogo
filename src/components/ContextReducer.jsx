@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useReducer, useContext, createContext } from "react";
+import { createContext, useContext, useReducer } from "react";
 
 const CartStateContext = createContext();
 const CartDispatchContext = createContext();
@@ -24,32 +24,27 @@ const reducer = (state, action) => {
 			newArr.splice(action.index, 1);
 			return newArr;
 		case "DROP":
-			let empArray = [];
-			return empArray;
+			return [];
 		case "UPDATE":
 			let arr = [...state];
 			arr.find((food, index) => {
 				if (food.id === action.id) {
-					console.log(
-						food.qty,
-						parseInt(action.qty),
-						action.price + food.price,
-					);
 					arr[index] = {
 						...food,
 						qty: parseInt(action.qty) + food.qty,
 						price: action.price + food.price,
 					};
 				}
-				return arr;
+				return null;
 			});
 			return arr;
 		default:
 			console.log("Error in Reducer");
+			return state;
 	}
 };
 
-export const CartProvider = ({ children }) => {
+export default function CartProvider({ children }) {
 	const [state, dispatch] = useReducer(reducer, []);
 
 	return (
@@ -59,7 +54,7 @@ export const CartProvider = ({ children }) => {
 			</CartStateContext.Provider>
 		</CartDispatchContext.Provider>
 	);
-};
+}
 
 export const useCart = () => useContext(CartStateContext);
 export const useDispatchCart = () => useContext(CartDispatchContext);

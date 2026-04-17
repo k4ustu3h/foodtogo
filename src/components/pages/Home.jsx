@@ -21,12 +21,15 @@ export default function Home() {
 	const [search, setSearch] = useState("");
 
 	const loadFoodItems = async () => {
-		let response = await fetch("https://foodtogo.cyclic.app/api/foodData", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
+		let response = await fetch(
+			"https://foodtogo-api.vercel.app/api/foodData",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
 			},
-		});
+		);
 		response = await response.json();
 		setFoodItems(response[0]);
 		setFoodCat(response[1]);
@@ -65,7 +68,7 @@ export default function Home() {
 				searchVisibility={search ? "visible" : "hidden"}
 			/>
 			<Container id="menu">
-				{foodCat.length === 0 ? (
+				{!foodCat || foodCat.length === 0 ? (
 					<Box sx={{ mb: 3 }}>
 						<Typography gutterBottom variant="h4">
 							<Skeleton variant="text" width="50%" />

@@ -38,7 +38,7 @@ export default function MyOrders() {
 	const fetchMyOrder = async () => {
 		try {
 			const response = await axios.post(
-				"https://foodtogo.cyclic.app/api/myOrderData",
+				"https://foodtogo-api.vercel.app/api/myOrderData",
 				{
 					email: localStorage.getItem("userEmail"),
 				},

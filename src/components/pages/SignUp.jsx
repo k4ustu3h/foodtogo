@@ -34,7 +34,7 @@ export default function SignUp() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const response = await fetch(
-			"https://foodtogo.cyclic.app/api/createuser",
+			"https://foodtogo-api.vercel.app/api/createuser",
 			{
 				method: "POST",
 				headers: {

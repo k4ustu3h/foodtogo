@@ -43,7 +43,7 @@ export default function Checkout() {
 		}
 
 		const result = await axios.post(
-			"https://foodtogo.cyclic.app/api/orders",
+			"https://foodtogo-api.vercel.app/api/orders",
 		);
 
 		if (!result) {
@@ -62,7 +62,7 @@ export default function Checkout() {
 			order_id: order_id,
 			handler: async function (res) {
 				let response = await fetch(
-					"https://foodtogo.cyclic.app/api/orderData",
+					"https://foodtogo-api.vercel.app/api/orderData",
 					{
 						method: "POST",
 						headers: {

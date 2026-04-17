@@ -27,16 +27,19 @@ export default function Login() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const response = await fetch("https://foodtogo.cyclic.app/api/login", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
+		const response = await fetch(
+			"https://foodtogo-api.vercel.app/api/login",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					email: credentials.email,
+					password: credentials.password,
+				}),
 			},
-			body: JSON.stringify({
-				email: credentials.email,
-				password: credentials.password,
-			}),
-		});
+		);
 		const json = await response.json();
 		console.log(json);
 		if (json.success) {

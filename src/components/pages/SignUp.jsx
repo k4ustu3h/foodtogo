@@ -3,8 +3,8 @@
 import { Icon } from "@iconify/react";
 import { Link as NextLink } from "next/link";
 import { ThemeProvider } from "@mui/material/styles";
-import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -64,20 +64,6 @@ export default function SignUp() {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
 
-	const [mode, setMode] = useState("dark");
-
-	useEffect(() => {
-		const storedMode = localStorage.getItem("themeMode");
-		if (storedMode) {
-			setMode(storedMode);
-		}
-	}, []);
-
-	const handleModeChange = (newMode) => {
-		setMode(newMode);
-		localStorage.setItem("themeMode", newMode);
-	};
-
 	const handleClick = () => {
 		if (!loading) {
 			setLoading(true);
@@ -85,7 +71,7 @@ export default function SignUp() {
 	};
 
 	return (
-		<ThemeProvider theme={themeOptions(mode)}>
+		<ThemeProvider theme={themeOptions}>
 			<Container component="main" maxWidth="xs">
 				<CssBaseline />
 				<NavBar />
@@ -224,7 +210,7 @@ export default function SignUp() {
 					</Box>
 				</Box>
 			</Container>
-			<Footer onClick={handleModeChange} />
+			<Footer />
 		</ThemeProvider>
 	);
 }

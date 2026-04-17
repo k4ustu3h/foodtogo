@@ -40,22 +40,8 @@ export default function Home() {
 		loadFoodItems();
 	}, []);
 
-	const [mode, setMode] = useState("dark");
-
-	useEffect(() => {
-		const storedMode = localStorage.getItem("themeMode");
-		if (storedMode) {
-			setMode(storedMode);
-		}
-	}, []);
-
-	const handleModeChange = (newMode) => {
-		setMode(newMode);
-		localStorage.setItem("themeMode", newMode);
-	};
-
 	return (
-		<ThemeProvider theme={themeOptions(mode)}>
+		<ThemeProvider theme={themeOptions}>
 			<CssBaseline />
 			<Navbar />
 			<HeroSection
@@ -172,7 +158,7 @@ export default function Home() {
 					})
 				)}
 			</Container>
-			<Footer onClick={handleModeChange} />
+			<Footer />
 		</ThemeProvider>
 	);
 }

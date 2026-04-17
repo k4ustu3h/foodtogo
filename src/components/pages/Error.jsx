@@ -2,7 +2,6 @@
 
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { ThemeProvider } from "@mui/material";
-import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,22 +12,8 @@ import { themeOptions } from "@/styles/themeOptions";
 import Footer from "@/components/footer/Footer";
 
 export default function Error() {
-	const [mode, setMode] = useState("dark");
-
-	useEffect(() => {
-		const storedMode = localStorage.getItem("themeMode");
-		if (storedMode !== null) {
-			setMode(storedMode);
-		}
-	}, []);
-
-	const handleModeChange = (newMode) => {
-		setMode(newMode);
-		localStorage.setItem("themeMode", newMode);
-	};
-
 	return (
-		<ThemeProvider theme={themeOptions(mode)}>
+		<ThemeProvider theme={themeOptions}>
 			<CssBaseline />
 			<Box
 				sx={{
@@ -83,7 +68,7 @@ export default function Error() {
 					</Box>
 				</Box>
 			</Box>
-			<Footer onClick={handleModeChange} />
+			<Footer />
 		</ThemeProvider>
 	);
 }

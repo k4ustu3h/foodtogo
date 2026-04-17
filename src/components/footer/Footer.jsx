@@ -66,7 +66,7 @@ export default function Footer(props) {
 					})}
 				</Box>
 				<Stack direction="row" spacing={2}>
-					<ThemeToggle onClick={props.onClick} />
+					<ThemeToggle />
 					<IconButton
 						href="https://facebook.com/"
 						target="_blank"

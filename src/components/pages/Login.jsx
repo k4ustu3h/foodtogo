@@ -4,6 +4,7 @@ import { Icon } from "@iconify/react";
 import { Link as NextLink } from "next/link";
 import { ThemeProvider } from "@mui/material/styles";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -12,7 +13,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import LinearProgress from "@mui/material/LinearProgress";
 import Link from "@mui/material/Link";
-import React, { useEffect, useState } from "react";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
@@ -57,20 +57,6 @@ export default function Login() {
 		setCredentials({ ...credentials, [e.target.name]: e.target.value });
 	};
 
-	const [mode, setMode] = useState("dark");
-
-	useEffect(() => {
-		const storedMode = localStorage.getItem("themeMode");
-		if (storedMode) {
-			setMode(storedMode);
-		}
-	}, []);
-
-	const handleModeChange = (newMode) => {
-		setMode(newMode);
-		localStorage.setItem("themeMode", newMode);
-	};
-
 	const handleClick = () => {
 		if (!loading) {
 			setLoading(true);
@@ -78,7 +64,7 @@ export default function Login() {
 	};
 
 	return (
-		<ThemeProvider theme={themeOptions(mode)}>
+		<ThemeProvider theme={themeOptions}>
 			<Container component="main" maxWidth="xs">
 				<CssBaseline />
 				<NavBar />
@@ -171,7 +157,7 @@ export default function Login() {
 					</Box>
 				</Box>
 			</Container>
-			<Footer onClick={handleModeChange} />
+			<Footer />
 		</ThemeProvider>
 	);
 }

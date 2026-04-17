@@ -1,5 +1,6 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
 
 import CartProvider from "@/components/ContextReducer";
 import ClarityInit from "@/components/analytics/ClarityInit";
@@ -17,7 +18,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning>
 			<head>
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
 				/>
 			</head>
 			<body>
+				<InitColorSchemeScript attribute="data-mui-color-scheme" />
 				<AppRouterCacheProvider>
 					<CartProvider>{children}</CartProvider>
 				</AppRouterCacheProvider>

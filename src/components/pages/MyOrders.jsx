@@ -51,22 +51,8 @@ export default function MyOrders() {
 		fetchMyOrder();
 	}, []);
 
-	const [mode, setMode] = useState("dark");
-
-	useEffect(() => {
-		const storedMode = localStorage.getItem("themeMode");
-		if (storedMode) {
-			setMode(storedMode);
-		}
-	}, []);
-
-	const handleModeChange = (newMode) => {
-		setMode(newMode);
-		localStorage.setItem("themeMode", newMode);
-	};
-
 	return (
-		<ThemeProvider theme={themeOptions(mode)}>
+		<ThemeProvider theme={themeOptions}>
 			<CssBaseline />
 			<Navbar />
 			<Container sx={{ my: 4 }}>
@@ -241,7 +227,7 @@ export default function MyOrders() {
 					</>
 				)}
 			</Container>
-			<Footer onClick={handleModeChange} />
+			<Footer />
 		</ThemeProvider>
 	);
 }

@@ -1,7 +1,7 @@
 "use client";
 
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Icon } from "@iconify/react";
-import { useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -17,10 +17,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 export default function HeroSection(props) {
 	const theme = useTheme();
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
-	useEffect(() => {
-		import("@dotlottie/player-component");
-	}, []);
 
 	return (
 		<Stack
@@ -139,9 +135,9 @@ export default function HeroSection(props) {
 					width: isMobile ? "100%" : "50%",
 				}}
 			>
-				<dotlottie-player
-					autoplay={true}
-					loop={true}
+				<DotLottieReact
+					autoplay
+					loop
 					src="/animations/healthy_or_junk.lottie"
 				/>
 			</Box>

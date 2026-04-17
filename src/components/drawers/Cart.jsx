@@ -1,5 +1,6 @@
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Icon } from "@iconify/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Badge from "@mui/material/Badge";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
@@ -13,10 +14,6 @@ import { useCart, useDispatchCart } from "@/components/ContextReducer";
 import Checkout from "@/components/buttons/Checkout";
 
 export default function Cart() {
-	useEffect(() => {
-		import("@dotlottie/player-component");
-	}, []);
-
 	const [state, setState] = useState({
 		right: false,
 	});
@@ -71,9 +68,9 @@ export default function Cart() {
 								textAlign: "center",
 							}}
 						>
-							<dotlottie-player
-								autoplay={true}
-								loop={true}
+							<DotLottieReact
+								autoplay
+								loop
 								src="/animations/empty_cart.lottie"
 								style={{ height: 400 }}
 							/>

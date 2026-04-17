@@ -1,5 +1,6 @@
 "use client";
 
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { ThemeProvider } from "@mui/material";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -23,10 +24,6 @@ import { themeOptions } from "@/styles/themeOptions";
 export default function MyOrders() {
 	const [orderData, setOrderData] = useState({});
 	const [showNoOrders, setShowNoOrders] = useState(false);
-
-	useEffect(() => {
-		import("@dotlottie/player-component");
-	}, []);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -132,7 +129,7 @@ export default function MyOrders() {
 									</Grid>
 								));
 							return (
-								<React.Fragment key={`${index}`}>
+								<Box key={index} sx={{ mb: 6 }}>
 									<Box sx={{ mb: 3 }}>
 										<Typography gutterBottom variant="h4">
 											{item[0].Order_date}
@@ -142,10 +139,10 @@ export default function MyOrders() {
 										</Typography>
 										<Divider sx={{ my: 2 }} />
 									</Box>
-									<Grid container spacing={2} sx={{ mb: 4 }}>
+									<Grid container spacing={2}>
 										{gridItems}
 									</Grid>
-								</React.Fragment>
+								</Box>
 							);
 						})
 				) : (
@@ -210,9 +207,9 @@ export default function MyOrders() {
 								<Box
 									sx={{ pt: 6, pb: 10, textAlign: "center" }}
 								>
-									<dotlottie-player
-										autoplay={true}
-										loop={true}
+									<DotLottieReact
+										autoplay
+										loop
 										src="/animations/tumbleweed.lottie"
 									/>
 									<Typography color="primary" variant="h3">

@@ -1,4 +1,5 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { CartProvider } from "../components/ContextReducer";
 import "../styles/index.css";
 
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
 				<AppRouterCacheProvider>
 					<CartProvider>{children}</CartProvider>
 				</AppRouterCacheProvider>
+				<GoogleAnalytics gaId="G-GHJTXKYNWB" />
 			</body>
 		</html>
 	);

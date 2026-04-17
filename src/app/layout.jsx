@@ -1,6 +1,7 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { CartProvider } from "../components/ContextReducer";
+import ClarityInit from "../components/analytics/ClarityInit";
 import "../styles/index.css";
 
 export const metadata = {
@@ -32,6 +33,7 @@ export default function RootLayout({ children }) {
 				<AppRouterCacheProvider>
 					<CartProvider>{children}</CartProvider>
 				</AppRouterCacheProvider>
+				<ClarityInit projectId="wcy2wvqemb" />
 				<GoogleAnalytics gaId="G-GHJTXKYNWB" />
 			</body>
 		</html>

@@ -15,9 +15,9 @@ import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import NextLink from "next/link";
 import { ThemeProvider } from "@mui/material";
-import Footer from "../footer/Footer";
-import Navbar from "../header/NavBar";
-import { themeOptions } from "../../styles/themeOptions";
+import Footer from "@/components/footer/Footer";
+import Navbar from "@/components/header/NavBar";
+import { themeOptions } from "@/styles/themeOptions";
 
 export default function MyOrders() {
 	const [orderData, setOrderData] = useState({});

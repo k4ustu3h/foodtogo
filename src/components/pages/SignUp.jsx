@@ -15,9 +15,9 @@ import { Icon } from "@iconify/react";
 import { Link as NextLink } from "next/link";
 import { useRouter } from "next/navigation";
 import { ThemeProvider } from "@mui/material/styles";
-import Footer from "../../components/footer/Footer";
-import NavBar from "../../components/header/NavBar";
-import { themeOptions } from "../../styles/themeOptions";
+import Footer from "@/components/footer/Footer";
+import NavBar from "@/components/header/NavBar";
+import { themeOptions } from "@/styles/themeOptions";
 
 export default function SignUp() {
 	const [loading, setLoading] = useState(false);

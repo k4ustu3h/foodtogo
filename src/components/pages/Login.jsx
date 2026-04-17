@@ -14,9 +14,9 @@ import { Icon } from "@iconify/react";
 import { Link as NextLink } from "next/link";
 import { useRouter } from "next/navigation";
 import { ThemeProvider } from "@mui/material/styles";
-import Footer from "../footer/Footer";
-import NavBar from "../header/NavBar";
-import { themeOptions } from "../../styles/themeOptions";
+import Footer from "@/components/footer/Footer";
+import NavBar from "@/components/header/NavBar";
+import { themeOptions } from "@/components/styles/themeOptions";
 import { LinearProgress } from "@mui/material";
 
 export default function Login() {

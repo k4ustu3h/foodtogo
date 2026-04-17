@@ -9,11 +9,11 @@ import Grid from "@mui/material/Grid";
 import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import { ThemeProvider } from "@mui/material";
-import FoodItems from "../cards/FoodItems";
-import Footer from "../footer/Footer";
-import HeroSection from "../sections/HeroSection";
-import Navbar from "../header/NavBar";
-import { themeOptions } from "../../styles/themeOptions";
+import FoodItems from "@/components/cards/FoodItems";
+import Footer from "@/components/footer/Footer";
+import HeroSection from "@/components/sections/HeroSection";
+import Navbar from "@/components/header/NavBar";
+import { themeOptions } from "@/styles/themeOptions";
 
 export default function Home() {
 	const [foodCat, setFoodCat] = useState([]);

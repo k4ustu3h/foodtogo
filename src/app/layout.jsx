@@ -1,8 +1,8 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { CartProvider } from "../components/ContextReducer";
-import ClarityInit from "../components/analytics/ClarityInit";
-import "../styles/index.css";
+import { CartProvider } from "@/components/ContextReducer";
+import ClarityInit from "@/components/analytics/ClarityInit";
+import "@/styles/index.css";
 
 export const metadata = {
 	title: "Food To Go",

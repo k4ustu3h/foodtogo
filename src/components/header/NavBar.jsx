@@ -19,8 +19,8 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Cart from "../drawers/Cart";
-import { ScrollToTop } from "../buttons/ScrollToTop";
+import Cart from "@/components/drawers/Cart";
+import { ScrollToTop } from "@/components/buttons/ScrollToTop";
 
 function ElevationScroll(props) {
 	const { children } = props;

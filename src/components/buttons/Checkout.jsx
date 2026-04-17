@@ -7,8 +7,8 @@ import Button from "@mui/material/Button";
 import LinearProgress from "@mui/material/LinearProgress";
 import { Icon } from "@iconify/react";
 import { useRouter } from "next/navigation";
-import { brown } from "../../styles/palette";
-import { useCart, useDispatchCart } from "../ContextReducer";
+import { brown } from "@/styles/palette";
+import { useCart, useDispatchCart } from "@/components/ContextReducer";
 
 export default function Checkout() {
 	const [loading, setLoading] = useState(false);

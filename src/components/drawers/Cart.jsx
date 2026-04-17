@@ -8,8 +8,8 @@ import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@iconify/react";
-import Checkout from "../buttons/Checkout";
-import { useCart, useDispatchCart } from "../ContextReducer";
+import Checkout from "@/components/buttons/Checkout";
+import { useCart, useDispatchCart } from "@/components/ContextReducer";
 
 export default function Cart() {
 	useEffect(() => {

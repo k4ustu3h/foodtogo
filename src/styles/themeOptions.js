@@ -1,5 +1,5 @@
 import { createTheme } from "@mui/material/styles";
-import { brown, teal, tealA400, tealA700 } from "./palette";
+import { brown, teal, tealA400, tealA700 } from "@/styles/palette";
 
 export const themeOptions = (mode) =>
 	createTheme({
